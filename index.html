@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaidan Patel - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-tan: #D2B48C;
+            --light-tan: #F5DEB3;
+            --cream: #FFF8DC;
+            --warm-white: #FEFEFE;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --text-dark: #2C2C2C;
+            --accent-brown: #8B7355;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+            overflow-x: hidden;
+        }
+
+        
+      /* ========== INTRO ANIMATION ========== */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-brown) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOutIntro 1s ease-in-out 3s forwards;
+        }
+
+        .intro-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--warm-white);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: logoEntrance 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .intro-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--warm-white);
+            animation: underlineGrow 1s ease-in-out 1.5s forwards;
+        }
+
+        @keyframes logoEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-15deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes underlineGrow {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeOutIntro {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 248, 220, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        nav.scrolled {
+            background: rgba(210, 180, 140, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-brown);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary-tan);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-tan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-tan) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: heroFadeIn 1s ease-out;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-brown);
+            font-weight: 600;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.7);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-brown);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-tan);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-brown);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-tan);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--medium-gray);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--accent-brown);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-tan);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideInFromLeft 0.6s ease-out;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+            animation: slideInFromRight 0.6s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.8);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-brown);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 10px;
+            background: var(--warm-white);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-tan);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: fixed;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-tan);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                margin-left: 40px;
+            }
+        }
+
+        /* Resume Button Styles */
+        .resume-button {
+            background: linear-gradient(135deg, var(--primary-tan), var(--accent-brown));
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 2rem 0;
+        }
+
+        .resume-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Animation Overlay -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-particles" id="introParticles"></div>
+        <div class="intro-logo">JP.</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">JP.</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('achievements')">Achievements</a></li>
+                <li><a href="#" onclick="showPage('future')">Future Goals</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Jaidan Patel</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('achievements')">Achievements</a></li>
+                <li><a href="#" onclick="showPage('future')">Future Goals</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Jaidan Patel</h1>
+                <p class="subtitle">Passionate finance technology student seeking to refine skills in algorithmic trading, quantitative finance, and fintech innovation at a forward-thinking institution.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">4.44</div>
+                        <div class="stat-label">Weighted GPA</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1490</div>
+                        <div class="stat-label">SAT Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10th</div>
+                        <div class="stat-label">Grade Level</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Eagle</div>
+                        <div class="stat-label">Scout Rank</div>
+                    </div>
+                </div>
+
+                <a href="#" onclick="showPage('about')" class="cta-button">Learn More About Me</a>
+                <a href="data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEphaWRhbiBQYXRlbCBSZXN1bWUpCi9Dcmv=" download="Jaidan_Patel_Resume.pdf" class="resume-button">Download Resume</a>
+            </div>
+        </section>
+        <footer class="footer">Made by Jaidan Patel</footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-section">
+        <section class="content-section">
+            <h2 class="section-title">About Me</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Academic Excellence</h3>
+                    <p>Currently maintaining a 4.44 weighted GPA at Briar Woods High School and the Academies of Engineering and Technology. Achieved a 1490 SAT score as a sophomore, with goals to reach 1550+ for competitive college admissions.</p>
+                </div>
+                <div class="card">
+                    <h3>Leadership & Service</h3>
+                    <p>Proud Eagle Scout and former Senior Patrol Leader, where I instructed scouts in essential skills and facilitated team-building exercises. Committed to developing leadership skills and personal character in myself and others.</p>
+                </div>
+                <div class="card">
+                    <h3>Athletic Dedication</h3>
+                    <p>Varsity swimmer since freshman year, participating in daily practices and regular meets. This experience has taught me discipline, time management, and the value of consistent effort toward long-term goals.</p>
+                </div>
+                <div class="card">
+                    <h3>Cultural Connection</h3>
+                    <p>Active in Bollywood/Hip-Hop Indian dancing, celebrating my cultural heritage while developing performance skills. Two-time 1st Place winner at KAGW Competition, demonstrating excellence in artistic expression.</p>
+                </div>
+                <div class="card">
+                    <h3>Business Acumen</h3>
+                    <p>DECA State competitor focusing on International Finance Team Decision Making. Passionate about finance technology and preparing for admission to top-tier business schools with sub-20% acceptance rates.</p>
+                </div>
+                <div class="card">
+                    <h3>Family Inspiration</h3>
+                    <p>Motivated by my two brothers who both attend Georgia Tech for Computer Science. Their success drives my ambition to excel academically and pursue innovative projects in finance technology.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">Made by Jaidan Patel</footer>
+    </div>
+
+    <!-- Achievements Page -->
+    <div id="achievements" class="page-section">
+        <section class="content-section">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>3rd Place DECA State Qualifier</h3>
+                    <p>Advanced to state competition in DECA, demonstrating exceptional business and leadership skills in a highly competitive environment.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>International Finance TDM Competitor</h3>
+                    <p>Competed in Team Decision Making events focused on international finance, developing critical thinking and collaborative problem-solving abilities.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Two-Time Bollywood Dance Champion</h3>
+                    <p>Achieved 1st Place twice at KAGW Competition, showcasing dedication to cultural arts and performance excellence.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Hackathon Honorable Mention</h3>
+                    <p>Received recognition at the Academies of Loudoun Hackathon, demonstrating technical skills and innovative thinking in technology solutions.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Eagle Scout Achievement</h3>
+                    <p>Attained the highest rank in Boy Scouts of America, completing extensive community service projects and leadership development.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Varsity Athletics</h3>
+                    <p>Consistent member of the varsity swim team since freshman year, balancing academic excellence with athletic commitment.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">Made by Jaidan Patel</footer>
+    </div>
+
+    <!-- Future Goals Page -->
+    <div id="future" class="page-section">
+        <section class="content-section">
+            <h2 class="section-title">Future Aspirations</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-dark); opacity: 0.9;">
+                    My vision is to become a leader in the rapidly evolving Finance Technology sector, where I can leverage cutting-edge technology to revolutionize how we approach financial services, trading, and investment strategies. I'm committed to pursuing excellence in both academic and practical applications of fintech innovation.
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Academic Excellence Goals</h3>
+                    <p>Targeting a 1550+ SAT score and admission to a prestigious university with sub-20% acceptance rate. Focusing on top-tier business and finance programs that will provide the foundation for my fintech career aspirations.</p>
+                </div>
+                <div class="card">
+                    <h3>Algorithmic Trading Innovation</h3>
+                    <p>Developing a sophisticated algorithmic trading platform that combines advanced quantitative analysis with machine learning algorithms. This project represents the intersection of my finance and technology interests.</p>
+                </div>
+                <div class="card">
+                    <h3>Community-Driven Crowdfunding</h3>
+                    <p>Building an innovative platform connecting local businesses with community investors. This venture aims to democratize access to capital while fostering local economic growth and community engagement.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; color: var(--accent-brown); margin-bottom: 2rem; font-size: 1.8rem;">Long-term Vision</h3>
+                <div style="background: rgba(255,255,255,0.8); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; line-height: 1.7; text-align: center; margin-bottom: 1.5rem;">
+                        I envision myself as a fintech entrepreneur who bridges the gap between traditional finance and emerging technologies. My goal is to create solutions that make financial services more accessible, efficient, and transparent for everyone.
+                    </p>
+                    <p style="font-size: 1rem; line-height: 1.6; text-align: center; opacity: 0.8;">
+                        Through continuous learning, strategic networking, and hands-on project development, I'm building the skills and experience necessary to make a meaningful impact in the financial technology landscape.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">Made by Jaidan Patel</footer>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="content-section">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+                
+                <div style="margin-top: 3rem; text-align: center;">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">Contact Information</h3>
+                    <p><strong>Email:</strong> jaidanpatel00@gmail.com</p>
+                    <p><strong>Phone:</strong> 571-723-7655</p>
+                    <p><strong>Location:</strong> Ashburn, VA 20148</p>
+                    <p><strong>Languages:</strong> English (Native), Hindi (Professional), Gujarati (Professional)</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">Made by Jaidan Patel</footer>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animate cards on scroll
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.card');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            [...cards, ...timelineItems].forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'all 0.6s ease-out';
+                observer.observe(item);
+            });
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            
+            // Add floating background elements
+            createFloatingElements();
+        });
+
+        // Create floating background elements
+        function createFloatingElements() {
+            const elements = ['💼', '🎓', '🏊‍♂️', '💻', '📈'];
+            const body = document.body;
+            
+            elements.forEach((element, index) => {
+                const floating = document.createElement('div');
+                floating.className = 'floating-element';
+                floating.innerHTML = element;
+                floating.style.left = Math.random() * 100 + '%';
+                floating.style.top = Math.random() * 100 + '%';
+                floating.style.fontSize = '2rem';
+                floating.style.animationDelay = index * 1.2 + 's';
+                body.appendChild(floating);
+            });
+        }
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
