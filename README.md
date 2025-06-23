@@ -23,7 +23,6 @@ This website is built using the following technologies:
 * **CSS3:** For styling and layout.
 * **JavaScript:** For interactive elements and dynamic content (if applicable).
 * **GitHub Pages:** For hosting and deployment.
-* [Add any other technologies you used, e.g., Bootstrap, React, Jekyll, etc.]
 
 ---
 
