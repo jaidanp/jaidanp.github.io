@@ -50,70 +50,182 @@
         }
 
         /* ========== INTRO ANIMATION ========== */
-        .intro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-brown) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: fadeOutIntro 1s ease-in-out 3s forwards;
-        }
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-brown) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOutIntro 1s ease-in-out 6s forwards;
+}
 
-        .intro-logo {
-            font-family: 'Lobster', cursive; /* Changed to Lobster font */
-            font-size: 8rem;
-            font-weight: 700;
-            color: var(--warm-white);
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: logoEntrance 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            letter-spacing: 0.1em;
-            position: relative;
-        }
+.intro-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .intro-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 4px;
-            background: var(--warm-white);
-            animation: underlineGrow 1s ease-in-out 1.5s forwards;
-        }
+.intro-logo {
+    font-family: 'Lobster', cursive;
+    font-size: 8rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    color: var(--warm-white);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 5;
+    animation: logoEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards;
+    opacity: 0;
+}
 
-        @keyframes logoEntrance {
-            0% {
-                opacity: 0;
-                transform: scale(0.3) rotate(-15deg);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2) rotate(5deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
+.septagon-container {
+    position: absolute;
+    top: 36%;
+    left: 43%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    z-index: 1;
+}
 
-        @keyframes underlineGrow {
-            to {
-                width: 100%;
-            }
-        }
+.septagon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    opacity: 0;
+}
 
-        @keyframes fadeOutIntro {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
+.septagon-1 {
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    animation: septagon1Animation 2s ease-in-out forwards;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0);
+}
+
+.septagon-2 {
+    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    animation: septagon2Animation 2s ease-in-out 0.3s forwards;
+    transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
+}
+
+.spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 30%, transparent 70%);
+    border-radius: 50%;
+    z-index: 2;
+    animation: spotlightAnimation 1.5s ease-out 2.5s forwards;
+}
+
+.full-name {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    color: var(--warm-white);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-right: 3.7rem;
+    margin-top: 5rem;
+    opacity: 0;
+    animation: fullNameAnimation 1s ease-out 4.5s forwards;
+    letter-spacing: 0.05em;
+}
+
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-15deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes septagon1Animation {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+}
+
+@keyframes septagon2Animation {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-180deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-334.3deg) scale(1);
+    }
+}
+
+@keyframes spotlightAnimation {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    50% {
+        width: 400px;
+        height: 400px;
+        opacity: 1;
+    }
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0.7;
+    }
+}
+
+@keyframes fullNameAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutIntro {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
         /* Navigation */
         nav {
@@ -229,6 +341,14 @@
             max-width: 800px;
             padding: 2rem;
             animation: heroFadeIn 1s ease-out; /* Main hero content animation */
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* Space between buttons */
+            margin-top: 2rem;
+            margin-right: 3.6rem;
         }
 
         @keyframes heroFadeIn {
@@ -642,10 +762,17 @@
 </head>
 <body>
     <!-- Intro Animation Overlay -->
-    <div class="intro-overlay" id="introOverlay">
-        <div class="intro-particles" id="introParticles"></div>
+<div class="intro-overlay" id="introOverlay">
+    <div class="intro-container">
+        <div class="septagon-container">
+            <div class="septagon septagon-1"></div>
+            <div class="septagon septagon-2"></div>
+            <div class="spotlight"></div>
+        </div>
         <div class="intro-logo">JP.</div>
+        <div class="full-name">Jaidan Patel</div>
     </div>
+</div>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -694,14 +821,16 @@
                     </div>
                 </div>
 
-                <a href="#" onclick="showPage('about')" class="cta-button">Learn More About Me</a>
-                <!-- Updated Resume Button -->
-                <a href="https://drive.google.com/file/d/1ItP52tKubTEwyDAYHjOKfa6FuYUo-9el/view?usp=sharing" target="_blank" class="resume-button">View Resume</a>
+                <div class="hero-buttons">
+    <a href="#" onclick="showPage('about')" class="cta-button">Learn More About Me</a>
+    <a href="https://drive.google.com/file/d/1ItP52tKubTEwyDAYHjOKfa6FuYUo-9el/view?usp=sharing" target="_blank" class="resume-button">View Resume</a>
+</div>
             </div>
         </section>
         <footer class="footer">Made by Jaidan Patel</footer>
     </div>
 
+   
     <!-- About Page -->
     <div id="about" class="page-section">
         <section class="content-section">
@@ -1008,7 +1137,7 @@
             // Remove the message box after the animation
             setTimeout(() => {
                 messageBox.remove();
-            }, 3000); // Match animation duration
+            }, 1000); // Match animation duration
 
             this.reset();
         });
