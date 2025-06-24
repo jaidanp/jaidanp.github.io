@@ -241,10 +241,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05); /* Initial subtle shadow */
         }
 
-        nav.scrolled {
-            background: rgba(210, 180, 140, 0.95); /* Slightly darker on scroll */
-            box-shadow: 0 2px 20px rgba(0,0,0,0.15); /* More pronounced shadow */
-        }
+        /* Remove the nav.scrolled rule entirely - we'll handle this with JavaScript */
 
         .nav-container {
             max-width: 1200px;
@@ -1021,15 +1018,29 @@
             }
         }
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Progressive navbar darkening on scroll
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    const scrollProgress = Math.min(window.scrollY / 800, 1); // Increased to 800 for slower rate
+    
+    // Calculate progressive color values
+    const lightColor = { r: 255, g: 248, b: 220 }; // --cream color
+    const darkColor = { r: 210, g: 180, b: 140 }; // --primary-tan color
+    
+    const currentR = Math.round(lightColor.r + (darkColor.r - lightColor.r) * scrollProgress);
+    const currentG = Math.round(lightColor.g + (darkColor.g - lightColor.g) * scrollProgress);
+    const currentB = Math.round(lightColor.b + (darkColor.b - lightColor.b) * scrollProgress);
+    
+    // Calculate progressive opacity (0.95 to 0.95, but you can adjust if needed)
+    const currentOpacity = 0.95;
+    
+    // Calculate progressive shadow intensity - starts immediately but grows slowly
+    const shadowIntensity = 0.05 + (0.1 * scrollProgress); // From 0.05 to 0.15
+    
+    // Apply the progressive styles
+    navbar.style.background = `rgba(${currentR}, ${currentG}, ${currentB}, ${currentOpacity})`;
+    navbar.style.boxShadow = `0 2px 20px rgba(0,0,0,${shadowIntensity})`;
+}); 
 
         // Animate cards and timeline items on scroll
         function animateOnScroll() {
