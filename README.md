@@ -53,7 +53,7 @@ You can visit the live version of my website here:
 
 ## ✍️ Author
 
-* **[Your Name/JaidanP]** - [https://github.com/jaidanp]
+Jaidan Patel - jaidanp
 
 ---
 
