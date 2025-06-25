@@ -1038,7 +1038,22 @@ function getPageFromURL() {
 
 // Initialize page based on URL on load
 function initializePage() {
-    const initialPage = getPageFromURL();
+    // Check if we're being redirected from 404.html
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectPath = urlParams.get('redirect');
+    
+    let initialPage;
+    if (redirectPath) {
+        // We were redirected from 404.html, use the redirect path
+        initialPage = redirectPath;
+        // Clean up the URL by removing the redirect parameter and updating the path
+        const newUrl = window.location.origin + '/' + redirectPath;
+        history.replaceState({ page: redirectPath }, '', newUrl);
+    } else {
+        // Normal navigation, get page from URL
+        initialPage = getPageFromURL();
+    }
+    
     const validPages = ['home', 'about', 'achievements', 'future', 'contact'];
     
     if (validPages.includes(initialPage)) {

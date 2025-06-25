@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaidan Patel - Portfolio</title>
+    <script>
+        // GitHub Pages SPA redirect solution
+        // This script captures the current path and redirects to index.html with the path as a query parameter
+        const path = window.location.pathname.slice(1); // Remove leading slash
+        if (path) {
+            // Redirect to index.html with the path as a query parameter
+            window.location.replace(window.location.origin + '/?redirect=' + encodeURIComponent(path));
+        } else {
+            // If no path, just go to index.html
+            window.location.replace(window.location.origin);
+        }
+    </script>
+</head>
+<body>
+    <!-- This content won't be visible due to immediate redirect -->
+    <p>Redirecting...</p>
+</body>
+</html>
