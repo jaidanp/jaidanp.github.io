@@ -19,6 +19,27 @@
             box-sizing: border-box;
         }
 
+        /* Anti-flicker solution - ensures smooth intro animation */
+html, body {
+    background: linear-gradient(135deg, #D2B48C 0%, #8B7355 100%) !important;
+    overflow: hidden; /* Prevent scrolling during intro */
+}
+
+/* Hide all content except intro overlay initially */
+body:not(.intro-complete) > *:not(.intro-overlay) {
+    visibility: hidden;
+}
+
+/* Show content after intro completes */
+body.intro-complete {
+    overflow-x: hidden; /* Restore normal overflow */
+    overflow-y: auto;
+}
+
+body.intro-complete > *:not(.intro-overlay) {
+    visibility: visible;
+}
+
         /* Color Variables */
         :root {
             --primary-tan: #D2B48C;
@@ -1126,6 +1147,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     animateOnScroll();
     createFloatingElements();
+    
+    // Show content after intro animation completes (7 seconds total)
+    setTimeout(() => {
+        document.body.classList.add('intro-complete');
+    }, 7000); // Match your intro animation duration (6s + 1s buffer)
 });
 
         // Create floating background elements
