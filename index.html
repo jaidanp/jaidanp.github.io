@@ -989,34 +989,59 @@
         // Store current page ID to manage transitions
         let currentPageId = 'home'; 
 
-        // Page Navigation
-        function showPage(pageId) {
-            const allPages = document.querySelectorAll('.page-section');
-            const newPage = document.getElementById(pageId);
+        // Page Navigation with URL routing
+function showPage(pageId) {
+    const allPages = document.querySelectorAll('.page-section');
+    const newPage = document.getElementById(pageId);
 
-            // Deactivate all pages first (remove active class and set display to none)
-            allPages.forEach(page => {
-                if (page.id !== pageId) {
-                    page.classList.remove('active');
-                    page.style.display = 'none'; 
-                }
-            });
-
-            // Activate the new page
-            if (newPage) {
-                newPage.style.display = 'block'; // Make it visible
-                // Use requestAnimationFrame for a slight delay, ensuring browser registers display change
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        newPage.classList.add('active'); // Add active class to trigger animation
-                    });
-                });
-                currentPageId = pageId; // Update the current active page
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of the new page
-            } else {
-                console.error('Page not found:', pageId);
-            }
+    // Deactivate all pages first (remove active class and set display to none)
+    allPages.forEach(page => {
+        if (page.id !== pageId) {
+            page.classList.remove('active');
+            page.style.display = 'none'; 
         }
+    });
+
+    // Activate the new page
+    if (newPage) {
+        newPage.style.display = 'block'; // Make it visible
+        // Use requestAnimationFrame for a slight delay, ensuring browser registers display change
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                newPage.classList.add('active'); // Add active class to trigger animation
+            });
+        });
+        currentPageId = pageId; // Update the current active page
+        
+        // Update URL without reloading the page
+        const url = pageId === 'home' ? '/' : `/${pageId}`;
+        history.pushState({ page: pageId }, '', url);
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of the new page
+    } else {
+        console.error('Page not found:', pageId);
+    }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function(e) {
+    const page = e.state?.page || getPageFromURL();
+    showPage(page);
+});
+
+// Get page from current URL
+function getPageFromURL() {
+    const path = window.location.pathname;
+    if (path === '/' || path === '') return 'home';
+    return path.substring(1); // Remove leading slash
+}
+
+// Initialize page based on URL on load
+function initializePage() {
+    const currentPage = getPageFromURL();
+    showPage(currentPage);
+}
+
 
         // Progressive navbar darkening on scroll
 window.addEventListener('scroll', function() {
@@ -1073,24 +1098,23 @@ window.addEventListener('scroll', function() {
             }
         }
 
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ensure only the home page is active on initial load
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => {
-                if (page.id !== 'home') {
-                    page.style.display = 'none'; // Ensure non-home pages are hidden initially
-                } else {
-                    page.style.display = 'block'; // Ensure home is visible
-                    page.classList.add('active'); // And marked active for its animation
-                }
-            });
-
-            animateOnScroll();
-            
-            // Add floating background elements
-            createFloatingElements();
-        });
+// Initialize animations when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Ensure only the home page is active on initial load
+    const pages = document.querySelectorAll('.page-section');
+    pages.forEach(page => {
+        if (page.id !== 'home') {
+            page.style.display = 'none'; // Ensure non-home pages are hidden initially
+        } else {
+            page.style.display = 'block'; // Ensure home is visible
+            page.classList.add('active'); // And marked active for its animation
+        }
+    });
+    animateOnScroll();
+    
+    // Add floating background elements
+    createFloatingElements();
+});
 
         // Create floating background elements
         function createFloatingElements() {
