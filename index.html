@@ -21,8 +21,14 @@
 
         /* Anti-flicker solution - ensures smooth intro animation */
 html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Only apply brown background and hide overflow during intro */
+body:not(.intro-complete) {
     background: linear-gradient(135deg, #D2B48C 0%, #8B7355 100%) !important;
-    overflow: hidden; /* Prevent scrolling during intro */
+    overflow: hidden;
 }
 
 /* Hide all content except intro overlay initially */
@@ -30,9 +36,10 @@ body:not(.intro-complete) > *:not(.intro-overlay) {
     visibility: hidden;
 }
 
-/* Show content after intro completes */
+/* Restore normal styles after intro completes */
 body.intro-complete {
-    overflow-x: hidden; /* Restore normal overflow */
+    background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
