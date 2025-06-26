@@ -19,36 +19,6 @@
             box-sizing: border-box;
         }
 
-        /* Anti-flicker solution - ensures smooth intro animation */
-html, body {
-    background: linear-gradient(135deg, #D2B48C 0%, #8B7355 100%) !important;
-    overflow: hidden; /* Prevent scrolling during intro */
-}
-
-/* Hide all content except intro overlay initially */
-body > *:not(.intro-overlay) {
-    visibility: hidden;
-}
-
-/* Show content after intro completes */
-body.intro-complete > *:not(.intro-overlay) {
-    visibility: visible;
-}
-
-body.intro-complete {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-}
-
-body.intro-complete html {
-    overflow: auto !important;
-}
-
-/* Force scrolling to work */
-body.intro-complete {
-    overflow: auto !important;
-    overflow-x: hidden !important;
-}
         /* Color Variables */
         :root {
             --primary-tan: #D2B48C;
@@ -1165,11 +1135,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Show content after intro animation completes (7 seconds total)
 setTimeout(() => {
     document.body.classList.add('intro-complete');
-    // Force enable scrolling
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-    document.body.style.overflowX = 'hidden';
-    document.body.style.overflowY = 'auto';
 }, 7000); // Match your intro animation duration (6s + 1s buffer)
 });
 
