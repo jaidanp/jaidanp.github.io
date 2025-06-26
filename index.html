@@ -36,14 +36,18 @@ body.intro-complete > *:not(.intro-overlay) {
 }
 
 body.intro-complete {
-    overflow-x: hidden !important; /* Restore normal overflow */
+    overflow-x: hidden !important;
     overflow-y: auto !important;
 }
 
-/* Ensure scrolling is restored */
-body.intro-complete html, 
-body.intro-complete body {
-    overflow-y: auto !important;
+body.intro-complete html {
+    overflow: auto !important;
+}
+
+/* Force scrolling to work */
+body.intro-complete {
+    overflow: auto !important;
+    overflow-x: hidden !important;
 }
         /* Color Variables */
         :root {
@@ -1158,10 +1162,15 @@ document.addEventListener('DOMContentLoaded', function() {
     animateOnScroll();
     createFloatingElements();
     
-    // Show content after intro animation completes (7 seconds total)
-    setTimeout(() => {
-        document.body.classList.add('intro-complete');
-    }, 7000); // Match your intro animation duration (6s + 1s buffer)
+// Show content after intro animation completes (7 seconds total)
+setTimeout(() => {
+    document.body.classList.add('intro-complete');
+    // Force enable scrolling
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    document.body.style.overflowX = 'hidden';
+    document.body.style.overflowY = 'auto';
+}, 7000); // Match your intro animation duration (6s + 1s buffer)
 });
 
         // Create floating background elements
