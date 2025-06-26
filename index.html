@@ -36,10 +36,15 @@ body.intro-complete > *:not(.intro-overlay) {
 }
 
 body.intro-complete {
-    overflow-x: hidden; /* Restore normal overflow */
-    overflow-y: auto;
+    overflow-x: hidden !important; /* Restore normal overflow */
+    overflow-y: auto !important;
 }
 
+/* Ensure scrolling is restored */
+body.intro-complete html, 
+body.intro-complete body {
+    overflow-y: auto !important;
+}
         /* Color Variables */
         :root {
             --primary-tan: #D2B48C;
@@ -53,15 +58,20 @@ body.intro-complete {
             --secondary-accent: #A52A2A; /* A darker, richer brown/red for emphasis */
         }
 
-        /* Body Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
-            overflow-x: hidden; /* Prevents horizontal scroll from animations */
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-        }
+/* Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
+    overflow-x: hidden; /* Prevents horizontal scroll from animations */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Override intro background after completion */
+body.intro-complete {
+    background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
+}
 
         /* Utility Classes */
         .container {
