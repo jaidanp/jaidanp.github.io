@@ -26,6 +26,19 @@
             /* Helps with font loading performance */
         }
 
+        /* Custom Font Import - Ambrosia */
+        @font-face {
+            font-family: 'Ambrosia';
+            /* This is the name you'll use in your CSS */
+            src: url('./fonts/Ambrosia-d9Lx.woff2') format('woff2'),
+                url('./fonts/Ambrosia-d9Lx.woff') format('woff');
+            font-weight: normal;
+            /* Adjust if your font has specific weights (e.g., 400 for regular) */
+            font-style: normal;
+            font-display: swap;
+            /* Helps with font loading performance */
+        }
+
         /* Custom Font Import - Rynda */
         @font-face {
             font-family: 'Rynda';
@@ -111,8 +124,8 @@
             font-family: 'Rynda', sans-serif;
             font-size: 11rem;
             font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 108px;
+            margin-top: 6.7rem;
+            margin-bottom: 76px;
             margin-left: 3.8rem;
             color: var(--warm-white);
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -172,12 +185,13 @@
         }
 
         .full-name {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 2.5rem;
+            font-size: 4rem;
+            font-family: 'Ambrosia';
+            font-weight: normal;
             color: var(--warm-white);
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             margin-right: 3rem;
-            margin-top: 3rem;
+            margin-bottom: 11rem;
             opacity: 0;
             animation: fullNameAnimation 1s ease-out 4.5s forwards;
             letter-spacing: 0.05em;
@@ -301,7 +315,8 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-family: 'Ambrosia';
             font-weight: bold;
             color: var(--accent-brown);
             text-decoration: none;
@@ -394,7 +409,8 @@
             text-align: center;
             position: relative;
             background: linear-gradient(135deg, var(--cream) 0%, var(--light-tan) 100%);
-            padding: 2rem;
+            padding: 0rem;
+            margin-bottom: 0;
             /* Ensure padding on smaller screens */
         }
 
