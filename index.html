@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,36 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Google Font Imports: 'Segoe UI' for body, 'Lobster' for intro animation -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Segoe+UI:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
 
     <style>
-        /*Removed custom @font-face rule as Lobster is from Google Fonts */
+        /* Custom Font Import - Selamyts */
+        @font-face {
+            font-family: 'Selamyts';
+            /* This is the name you'll use in your CSS */
+            src: url('./fonts/Selamyts.woff2') format('woff2'),
+                url('./fonts/Selamyts.woff') format('woff');
+            font-weight: normal;
+            /* Adjust if your font has specific weights (e.g., 400 for regular) */
+            font-style: normal;
+            font-display: swap;
+            /* Helps with font loading performance */
+        }
+
+        /* Custom Font Import - Rynda */
+        @font-face {
+            font-family: 'Rynda';
+            /* This is the name you'll use in your CSS */
+            src: url('./fonts/Rynda-xR7Pr.woff2') format('woff2'),
+                url('./fonts/Rynda-xR7Pr.woff') format('woff');
+            font-weight: normal;
+            /* Adjust if your font has specific weights (e.g., 400 for regular) */
+            font-style: normal;
+            font-display: swap;
+            /* Helps with font loading performance */
+        }
 
         /* General Reset */
         * {
@@ -29,23 +56,26 @@
             --medium-gray: #E0E0E0;
             --text-dark: #2C2C2C;
             --accent-brown: #8B7355;
-            --secondary-accent: #A52A2A; /* A darker, richer brown/red for emphasis */
+            --secondary-accent: #A52A2A;
+            /* A darker, richer brown/red for emphasis */
         }
 
-/* Body Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--text-dark);
-    background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
-    overflow-x: hidden; /* Prevents horizontal scroll from animations */
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-}
+        /* Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
+            overflow-x: hidden;
+            /* Prevents horizontal scroll from animations */
+            scroll-behavior: smooth;
+            /* Smooth scrolling for anchor links */
+        }
 
-/* Override intro background after completion */
-body.intro-complete {
-    background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
-}
+        /* Override intro background after completion */
+        body.intro-complete {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%) !important;
+        }
 
         /* Utility Classes */
         .container {
@@ -55,182 +85,193 @@ body.intro-complete {
         }
 
         /* ========== INTRO ANIMATION ========== */
-.intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-brown) 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeOutIntro 1s ease-in-out 6s forwards;
-}
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-brown) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOutIntro 1s ease-in-out 6s forwards;
+        }
 
-.intro-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+        .intro-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-.intro-logo {
-    font-family: 'Lobster', cursive;
-    font-size: 8rem;
-    font-weight: 700;
-    margin-top: 2rem;
-    color: var(--warm-white);
-    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    letter-spacing: 0.1em;
-    position: relative;
-    z-index: 5;
-    animation: logoEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards;
-    opacity: 0;
-}
+        .intro-logo {
+            font-family: 'Rynda', sans-serif;
+            font-size: 11rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 108px;
+            margin-left: 3.8rem;
+            color: var(--warm-white);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 5;
+            animation: logoEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards;
+            opacity: 0;
+        }
 
-.septagon-container {
-    position: absolute;
-    top: 36%;
-    left: 44%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    z-index: 1;
-}
+        .septagon-container {
+            position: absolute;
+            top: 36%;
+            left: 44%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            z-index: 1;
+        }
 
-.septagon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-    opacity: 0;
-}
+        .septagon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            opacity: 0;
+        }
 
-.septagon-1 {
-    background: rgba(255, 255, 255, 0.3);
-    border: 3px solid rgba(255, 255, 255, 0.6);
-    animation: septagon1Animation 2s ease-in-out forwards;
-    transform: translate(-50%, -50%) rotate(0deg) scale(0);
-}
+        .septagon-1 {
+            background: rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            animation: septagon1Animation 2s ease-in-out forwards;
+            transform: translate(-50%, -50%) rotate(0deg) scale(0);
+        }
 
-.septagon-2 {
-    background: rgba(255, 255, 255, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    animation: septagon2Animation 2s ease-in-out 0.3s forwards;
-    transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
-}
+        .septagon-2 {
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            animation: septagon2Animation 2s ease-in-out 0.3s forwards;
+            transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
+        }
 
-.spotlight {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 30%, transparent 70%);
-    border-radius: 50%;
-    z-index: 2;
-    animation: spotlightAnimation 1.5s ease-out 2.5s forwards;
-}
+        .spotlight {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 30%, transparent 70%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: spotlightAnimation 1.5s ease-out 2.5s forwards;
+        }
 
-.full-name {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 2.5rem;
-    color: var(--warm-white);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    margin-right: 3rem;
-    margin-top: 3rem;
-    opacity: 0;
-    animation: fullNameAnimation 1s ease-out 4.5s forwards;
-    letter-spacing: 0.05em;
-}
+        .full-name {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 2.5rem;
+            color: var(--warm-white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-right: 3rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fullNameAnimation 1s ease-out 4.5s forwards;
+            letter-spacing: 0.05em;
+        }
 
-@keyframes logoEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(0.3) rotate(-15deg);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2) rotate(5deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
+        @keyframes logoEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-15deg);
+            }
 
-@keyframes septagon1Animation {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) rotate(0deg) scale(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
-    }
-}
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(5deg);
+            }
 
-@keyframes septagon2Animation {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(-180deg) scale(1.2);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(-334.3deg) scale(1);
-    }
-}
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
 
-@keyframes spotlightAnimation {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
-    50% {
-        width: 400px;
-        height: 400px;
-        opacity: 1;
-    }
-    100% {
-        width: 500px;
-        height: 500px;
-        opacity: 0.7;
-    }
-}
+        @keyframes septagon1Animation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(0deg) scale(0);
+            }
 
-@keyframes fullNameAnimation {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+            }
 
-@keyframes fadeOutIntro {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes septagon2Animation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(25.7deg) scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(-180deg) scale(1.2);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(-334.3deg) scale(1);
+            }
+        }
+
+        @keyframes spotlightAnimation {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+
+            50% {
+                width: 400px;
+                height: 400px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 500px;
+                height: 500px;
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes fullNameAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOutIntro {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
 
         /* Navigation */
         nav {
@@ -241,9 +282,11 @@ body.intro-complete {
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease; /* Transition for scroll effect */
+            transition: all 0.3s ease;
+            /* Transition for scroll effect */
             border-bottom: 1px solid var(--medium-gray);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05); /* Initial subtle shadow */
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            /* Initial subtle shadow */
         }
 
         /* Remove the nav.scrolled rule entirely - we'll handle this with JavaScript */
@@ -265,21 +308,28 @@ body.intro-complete {
             transition: color 0.3s ease, transform 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px; /* Space between logo text and icon */
+            gap: 10px;
+            /* Space between logo text and icon */
         }
 
         .logo:hover {
             color: var(--accent-brown);
             color: #efcca2;
-            transform: translateY(-2px); /* Subtle lift on hover */
+            transform: translateY(-2px);
+            /* Subtle lift on hover */
         }
+
         .logo i {
-            font-size: 1.2em; /* Adjust icon size */
-            color: #efcca2; /* Icon color */
+            font-size: 1.2em;
+            /* Adjust icon size */
+            color: #efcca2;
+            /* Icon color */
             transition: color 0.3s ease;
         }
+
         .logo:hover i {
-            color: var(--accent-brown); /* Icon color on hover */
+            color: var(--accent-brown);
+            /* Icon color on hover */
         }
 
 
@@ -314,42 +364,52 @@ body.intro-complete {
 
         /* Page Sections */
         .page-section {
-            display: none; /* Hidden by default initially */
+            display: none;
+            /* Hidden by default initially */
             min-height: 100vh;
-            padding-top: 80px; /* Space for fixed navbar */
-            opacity: 0; /* Hidden initially for JS animation */
-            transform: translateY(30px); /* Start slightly below */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for section reveal */
+            padding-top: 80px;
+            /* Space for fixed navbar */
+            opacity: 0;
+            /* Hidden initially for JS animation */
+            transform: translateY(30px);
+            /* Start slightly below */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            /* Smooth transition for section reveal */
         }
 
         .page-section.active {
-            display: block; /* Make block to enable transition */
+            display: block;
+            /* Make block to enable transition */
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Hero Section */
         .hero {
-            min-height: calc(100vh - 80px); /* Adjust for navbar height */
+            min-height: calc(100vh - 80px);
+            /* Adjust for navbar height */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             background: linear-gradient(135deg, var(--cream) 0%, var(--light-tan) 100%);
-            padding: 2rem; /* Ensure padding on smaller screens */
+            padding: 2rem;
+            /* Ensure padding on smaller screens */
         }
 
         .hero-content {
             max-width: 800px;
             padding: 2rem;
-            animation: heroFadeIn 1s ease-out; /* Main hero content animation */
+            animation: heroFadeIn 1s ease-out;
+            /* Main hero content animation */
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 2rem; /* Space between buttons */
+            gap: 2rem;
+            /* Space between buttons */
             margin-top: 2rem;
             margin-right: 3.6rem;
         }
@@ -359,6 +419,7 @@ body.intro-complete {
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -367,6 +428,7 @@ body.intro-complete {
 
         .hero h1 {
             font-size: 3.5rem;
+            font-family: 'Selamyts', sans-serif;
             margin-bottom: 1rem;
             color: var(--accent-brown);
             font-weight: 600;
@@ -387,24 +449,28 @@ body.intro-complete {
         }
 
         .stat-item {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255, 255, 255, 0.7);
             padding: 1.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px; /* Space between icon, number, label */
+            gap: 10px;
+            /* Space between icon, number, label */
         }
 
         .stat-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+
         .stat-item i {
-            font-size: 2.2rem; /* Icon size */
-            color: var(--primary-tan); /* Icon color */
+            font-size: 2.2rem;
+            /* Icon size */
+            color: var(--primary-tan);
+            /* Icon color */
         }
 
         .stat-number {
@@ -419,7 +485,9 @@ body.intro-complete {
             opacity: 0.7;
         }
 
-        .cta-button, .resume-button { /* Combined styles for both buttons */
+        .cta-button,
+        .resume-button {
+            /* Combined styles for both buttons */
             display: inline-block;
             background: linear-gradient(135deg, var(--primary-tan), var(--accent-brown));
             color: white;
@@ -429,13 +497,15 @@ body.intro-complete {
             transition: all 0.3s ease;
             font-weight: 500;
             margin: 1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .cta-button:hover, .resume-button:hover {
+        .cta-button:hover,
+        .resume-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, var(--accent-brown), var(--primary-tan)); /* Reverse gradient on hover */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--accent-brown), var(--primary-tan));
+            /* Reverse gradient on hover */
         }
 
         /* Content Sections */
@@ -473,24 +543,29 @@ body.intro-complete {
         }
 
         .card {
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             border: 1px solid var(--medium-gray);
-            display: flex; /* For icon alignment */
+            display: flex;
+            /* For icon alignment */
             flex-direction: column;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
+
         .card i {
-            font-size: 2.5rem; /* Icon size */
-            color: var(--secondary-accent); /* Icon color */
-            margin-bottom: 1rem; /* Space below icon */
+            font-size: 2.5rem;
+            /* Icon size */
+            color: var(--secondary-accent);
+            /* Icon color */
+            margin-bottom: 1rem;
+            /* Space below icon */
         }
 
         .card h3 {
@@ -504,62 +579,85 @@ body.intro-complete {
             color: var(--text-dark);
             opacity: 0.8;
         }
+
         .content-image {
             max-width: 100%;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin: 3rem auto; /* Center image and provide vertical spacing */
-            display: block; /* Ensure it takes up its own line */
-            object-fit: cover; /* Cover the area, possibly cropping */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 3rem auto;
+            /* Center image and provide vertical spacing */
+            display: block;
+            /* Ensure it takes up its own line */
+            object-fit: cover;
+            /* Cover the area, possibly cropping */
         }
 
         /* Timeline - Achievements Page */
         .timeline {
             position: relative;
-            margin: 3rem auto; /* Center the timeline container itself */
-            max-width: 900px; /* Constrain max width for better visual flow */
-            padding: 0 20px; /* Add some padding on sides */
-            display: flex; /* Use flexbox for items */
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items initially */
+            margin: 3rem auto;
+            /* Center the timeline container itself */
+            max-width: 900px;
+            /* Constrain max width for better visual flow */
+            padding: 0 20px;
+            /* Add some padding on sides */
+            display: flex;
+            /* Use flexbox for items */
+            flex-direction: column;
+            /* Stack items vertically */
+            align-items: center;
+            /* Center items initially */
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 50%; /* Center vertical line */
+            left: 50%;
+            /* Center vertical line */
             transform: translateX(-50%);
             width: 2px;
             height: 100%;
             background: var(--primary-tan);
-            z-index: 1; /* Ensure line is behind content */
+            z-index: 1;
+            /* Ensure line is behind content */
         }
 
         .timeline-item {
             position: relative;
-            margin: 1.5rem 0; /* Adjust vertical spacing */
+            margin: 1.5rem 0;
+            /* Adjust vertical spacing */
             padding: 2rem;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 48%; /* Each item takes roughly half width */
-            box-sizing: border-box; /* Include padding/border in width */
-            z-index: 2; /* Ensure items are above the line */
-            animation: slideInFromLeft 0.6s ease-out; /* Default animation */
-            text-align: left; /* Ensure text within items is left-aligned */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            /* Each item takes roughly half width */
+            box-sizing: border-box;
+            /* Include padding/border in width */
+            z-index: 2;
+            /* Ensure items are above the line */
+            animation: slideInFromLeft 0.6s ease-out;
+            /* Default animation */
+            text-align: left;
+            /* Ensure text within items is left-aligned */
         }
 
         /* Positioning for alternating items */
         .timeline-item:nth-child(odd) {
-            align-self: flex-start; /* Push odd items to the left */
-            margin-right: auto; /* Ensure it stays left */
+            align-self: flex-start;
+            /* Push odd items to the left */
+            margin-right: auto;
+            /* Ensure it stays left */
         }
 
         .timeline-item:nth-child(even) {
-            align-self: flex-end; /* Push even items to the right */
-            margin-left: auto; /* Ensure it stays right */
-            animation: slideInFromRight 0.6s ease-out; /* Separate animation for even */
+            align-self: flex-end;
+            /* Push even items to the right */
+            margin-left: auto;
+            /* Ensure it stays right */
+            animation: slideInFromRight 0.6s ease-out;
+            /* Separate animation for even */
         }
 
         /* Small circle on the timeline line */
@@ -576,13 +674,17 @@ body.intro-complete {
         }
 
         .timeline-item:nth-child(odd)::after {
-            right: -27px; /* Position circle on the left item's right edge, near the line */
-            transform: translateY(-50%) translateX(50%); /* Adjust to perfectly center on the line */
+            right: -27px;
+            /* Position circle on the left item's right edge, near the line */
+            transform: translateY(-50%) translateX(50%);
+            /* Adjust to perfectly center on the line */
         }
 
         .timeline-item:nth-child(even)::after {
-            left: -27px; /* Position circle on the right item's left edge, near the line */
-            transform: translateY(-50%) translateX(-50%); /* Adjust to perfectly center on the line */
+            left: -27px;
+            /* Position circle on the right item's left edge, near the line */
+            transform: translateY(-50%) translateX(-50%);
+            /* Adjust to perfectly center on the line */
         }
 
         .timeline-item h3 {
@@ -590,10 +692,13 @@ body.intro-complete {
             color: var(--accent-brown);
             margin-bottom: 0.5rem;
         }
+
         .timeline-item i {
-            font-size: 1.8rem; /* Icon size for timeline items */
+            font-size: 1.8rem;
+            /* Icon size for timeline items */
             color: var(--secondary-accent);
-            margin-right: 10px; /* Space between icon and text */
+            margin-right: 10px;
+            /* Space between icon and text */
         }
 
 
@@ -602,6 +707,7 @@ body.intro-complete {
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -613,6 +719,7 @@ body.intro-complete {
                 opacity: 0;
                 transform: translateX(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -623,10 +730,10 @@ body.intro-complete {
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -654,23 +761,26 @@ body.intro-complete {
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-tan);
-            box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.5); /* Subtle glow on focus */
+            box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.5);
+            /* Subtle glow on focus */
         }
 
         /* Contact Information block */
         .contact-info-block {
             margin-top: 3rem;
             text-align: center;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255, 255, 255, 0.7);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         .contact-info-block h3 {
             color: var(--accent-brown);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
+
         .contact-info-block p {
             display: flex;
             align-items: center;
@@ -680,8 +790,10 @@ body.intro-complete {
             color: var(--text-dark);
             opacity: 0.9;
         }
+
         .contact-info-block p i {
-            color: var(--primary-tan); /* Icon color */
+            color: var(--primary-tan);
+            /* Icon color */
             font-size: 1.2rem;
         }
 
@@ -696,9 +808,12 @@ body.intro-complete {
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-20px);
             }
@@ -712,13 +827,15 @@ body.intro-complete {
             padding: 1rem;
             margin-top: 2rem;
             font-size: 0.9rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Subtle shadow on top */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow on top */
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Hide nav links on small screens, can implement hamburger menu if desired */
+                display: none;
+                /* Hide nav links on small screens, can implement hamburger menu if desired */
             }
 
             .hero h1 {
@@ -730,52 +847,66 @@ body.intro-complete {
             }
 
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr); /* Two columns for stats on mobile */
+                grid-template-columns: repeat(2, 1fr);
+                /* Two columns for stats on mobile */
             }
+
             .stat-item {
-                padding: 1rem; /* Smaller padding for stats on mobile */
+                padding: 1rem;
+                /* Smaller padding for stats on mobile */
             }
 
             /* Timeline for mobile - single column */
             .timeline::before {
-                left: 20px; /* Keep line on the left for mobile */
-                transform: translateX(0); /* Remove horizontal transform */
+                left: 20px;
+                /* Keep line on the left for mobile */
+                transform: translateX(0);
+                /* Remove horizontal transform */
             }
 
             .timeline-item,
             .timeline-item:nth-child(even) {
-                width: calc(100% - 40px); /* Full width minus left margin */
-                margin-left: 40px; /* Push all items to the right of the line */
-                margin-right: 0; /* Reset right margin */
-                align-self: auto; /* Reset flex alignment */
-                animation: slideInFromLeft 0.6s ease-out; /* All items slide from left */
+                width: calc(100% - 40px);
+                /* Full width minus left margin */
+                margin-left: 40px;
+                /* Push all items to the right of the line */
+                margin-right: 0;
+                /* Reset right margin */
+                align-self: auto;
+                /* Reset flex alignment */
+                animation: slideInFromLeft 0.6s ease-out;
+                /* All items slide from left */
             }
 
             .timeline-item::after {
-                left: -27px; /* Position circle on the left side of all items */
+                left: -27px;
+                /* Position circle on the left side of all items */
                 right: unset;
-                transform: translateY(-50%) translateX(0); /* Adjust transform for single column */
+                transform: translateY(-50%) translateX(0);
+                /* Adjust transform for single column */
             }
 
             .content-section {
-                padding: 2rem 1rem; /* Adjust padding for mobile */
+                padding: 2rem 1rem;
+                /* Adjust padding for mobile */
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Intro Animation Overlay -->
-<div class="intro-overlay" id="introOverlay">
-    <div class="intro-container">
-        <div class="septagon-container">
-            <div class="septagon septagon-1"></div>
-            <div class="septagon septagon-2"></div>
-            <div class="spotlight"></div>
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-container">
+            <div class="septagon-container">
+                <div class="septagon septagon-1"></div>
+                <div class="septagon septagon-2"></div>
+                <div class="spotlight"></div>
+            </div>
+            <div class="intro-logo">jp.</div>
+            <div class="full-name">Jaidan Patel</div>
         </div>
-        <div class="intro-logo">JP.</div>
-        <div class="full-name">Jaidan Patel</div>
     </div>
-</div>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -799,7 +930,8 @@ body.intro-complete {
         <section class="hero">
             <div class="hero-content">
                 <h1>Jaidan Patel</h1>
-                <p class="subtitle">Passionate finance technology student seeking to refine skills in algorithmic trading, quantitative finance, and fintech innovation at a forward-thinking institution.</p>
+                <p class="subtitle">Passionate finance technology student seeking to refine skills in algorithmic
+                    trading, quantitative finance, and fintech innovation at a forward-thinking institution.</p>
 
                 <div class="stats-grid">
                     <div class="stat-item">
@@ -825,9 +957,10 @@ body.intro-complete {
                 </div>
 
                 <div class="hero-buttons">
-    <a href="#" onclick="showPage('about')" class="cta-button">Learn More About Me</a>
-    <a href="https://drive.google.com/file/d/1ItP52tKubTEwyDAYHjOKfa6FuYUo-9el/view?usp=sharing" target="_blank" class="resume-button">View Resume</a>
-</div>
+                    <a href="#" onclick="showPage('about')" class="cta-button">Learn More About Me</a>
+                    <a href="https://drive.google.com/file/d/1ItP52tKubTEwyDAYHjOKfa6FuYUo-9el/view?usp=sharing"
+                        target="_blank" class="resume-button">View Resume</a>
+                </div>
             </div>
         </section>
         <footer class="footer">Made by Jaidan Patel</footer>
@@ -838,37 +971,50 @@ body.intro-complete {
     <div id="about" class="page-section">
         <section class="content-section">
             <h2 class="section-title">About Me</h2>
-            <img src="https://placehold.co/1000x400/D2B48C/FFF8DC?text=Discover+My+Journey" alt="Abstract image representing discovery or journey" class="content-image">
+            <img src="https://placehold.co/1000x400/D2B48C/FFF8DC?text=Discover+My+Journey"
+                alt="Abstract image representing discovery or journey" class="content-image">
             <div class="cards-grid">
                 <div class="card">
                     <i class="fas fa-book-reader"></i>
                     <h3>Academic Excellence</h3>
-                    <p>Currently maintaining a 4.50 weighted GPA at Briar Woods High School and the Academies of Engineering and Technology. Achieved a 1490 SAT score as a sophomore, with goals to reach 1550+ for competitive college admissions.</p>
+                    <p>Currently maintaining a 4.50 weighted GPA at Briar Woods High School and the Academies of
+                        Engineering and Technology. Achieved a 1490 SAT score as a sophomore, with goals to reach 1550+
+                        for competitive college admissions.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-handshake"></i>
                     <h3>Leadership & Service</h3>
-                    <p>Proud Eagle Scout and former Senior Patrol Leader, where I instructed scouts in essential skills and facilitated team-building exercises. Committed to developing leadership skills and personal character in myself and others.</p>
+                    <p>Proud Eagle Scout and former Senior Patrol Leader, where I instructed scouts in essential skills
+                        and facilitated team-building exercises. Committed to developing leadership skills and personal
+                        character in myself and others.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-swimmer"></i>
                     <h3>Athletic Dedication</h3>
-                    <p>Varsity swimmer since freshman year, participating in daily practices and regular meets. This experience has taught me discipline, time management, and the value of consistent effort toward long-term goals.</p>
+                    <p>Varsity swimmer since freshman year, participating in daily practices and regular meets. This
+                        experience has taught me discipline, time management, and the value of consistent effort toward
+                        long-term goals.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-mask"></i>
                     <h3>Cultural Connection</h3>
-                    <p>Active in Bollywood/Hip-Hop Indian dancing, celebrating my cultural heritage while developing performance skills. Two-time 1st Place winner at KAGW Competition, demonstrating excellence in artistic expression.</p>
+                    <p>Active in Bollywood/Hip-Hop Indian dancing, celebrating my cultural heritage while developing
+                        performance skills. Two-time 1st Place winner at KAGW Competition, demonstrating excellence in
+                        artistic expression.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-chart-pie"></i>
                     <h3>Business Acumen</h3>
-                    <p>DECA State competitor focusing on International Finance Team Decision Making. Passionate about finance technology and preparing for admission to top-tier business schools with sub-20% acceptance rates.</p>
+                    <p>DECA State competitor focusing on International Finance Team Decision Making. Passionate about
+                        finance technology and preparing for admission to top-tier business schools with sub-20%
+                        acceptance rates.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-users-line"></i>
                     <h3>Family Inspiration</h3>
-                    <p>Motivated by my two brothers who both attend Georgia Tech for Computer Science. Their success drives my ambition to excel academically and pursue innovative projects in finance technology.</p>
+                    <p>Motivated by my two brothers who both attend Georgia Tech for Computer Science. Their success
+                        drives my ambition to excel academically and pursue innovative projects in finance technology.
+                    </p>
                 </div>
             </div>
         </section>
@@ -882,27 +1028,33 @@ body.intro-complete {
             <div class="timeline">
                 <div class="timeline-item">
                     <h3><i class="fas fa-trophy"></i>3rd Place DECA State Qualifier</h3>
-                    <p>Advanced to state competition in DECA, demonstrating exceptional business and leadership skills in a highly competitive environment.</p>
+                    <p>Advanced to state competition in DECA, demonstrating exceptional business and leadership skills
+                        in a highly competitive environment.</p>
                 </div>
                 <div class="timeline-item">
                     <h3><i class="fas fa-globe"></i>International Finance TDM Competitor</h3>
-                    <p>Competed in Team Decision Making events focused on international finance, developing critical thinking and collaborative problem-solving abilities.</p>
+                    <p>Competed in Team Decision Making events focused on international finance, developing critical
+                        thinking and collaborative problem-solving abilities.</p>
                 </div>
                 <div class="timeline-item">
                     <h3><i class="fas fa-star"></i>Two-Time Bollywood Dance Champion</h3>
-                    <p>Achieved 1st Place twice at KAGW Competition, showcasing dedication to cultural arts and performance excellence.</p>
+                    <p>Achieved 1st Place twice at KAGW Competition, showcasing dedication to cultural arts and
+                        performance excellence.</p>
                 </div>
                 <div class="timeline-item">
                     <h3><i class="fas fa-laptop-code"></i>Hackathon Honorable Mention</h3>
-                    <p>Received recognition at the Academies of Loudoun Hackathon, demonstrating technical skills and innovative thinking in technology solutions.</p>
+                    <p>Received recognition at the Academies of Loudoun Hackathon, demonstrating technical skills and
+                        innovative thinking in technology solutions.</p>
                 </div>
                 <div class="timeline-item">
                     <h3><i class="fas fa-mountain-sun"></i>Eagle Scout Achievement</h3>
-                    <p>Attained the highest rank in Boy Scouts of America, completing extensive community service projects and leadership development.</p>
+                    <p>Attained the highest rank in Boy Scouts of America, completing extensive community service
+                        projects and leadership development.</p>
                 </div>
                 <div class="timeline-item">
                     <h3><i class="fas fa-person-swimming"></i>Varsity Athletics</h3>
-                    <p>Consistent member of the varsity swim team since freshman year, balancing academic excellence with athletic commitment.</p>
+                    <p>Consistent member of the varsity swim team since freshman year, balancing academic excellence
+                        with athletic commitment.</p>
                 </div>
             </div>
         </section>
@@ -915,38 +1067,54 @@ body.intro-complete {
             <h2 class="section-title">Future Aspirations</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
                 <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-dark); opacity: 0.9;">
-                    My vision is to become a leader in the rapidly evolving Finance Technology sector, where I can leverage cutting-edge technology to revolutionize how we approach financial services, trading, and investment strategies. I'm committed to pursuing excellence in both academic and practical applications of fintech innovation.
+                    My vision is to become a leader in the rapidly evolving Finance Technology sector, where I can
+                    leverage cutting-edge technology to revolutionize how we approach financial services, trading, and
+                    investment strategies. I'm committed to pursuing excellence in both academic and practical
+                    applications of fintech innovation.
                 </p>
             </div>
 
-            <img src="https://placehold.co/1000x400/8B7355/FFF8DC?text=Innovating+Fintech" alt="Abstract image representing fintech innovation" class="content-image">
+            <img src="https://placehold.co/1000x400/8B7355/FFF8DC?text=Innovating+Fintech"
+                alt="Abstract image representing fintech innovation" class="content-image">
 
             <div class="cards-grid">
                 <div class="card">
                     <i class="fas fa-university"></i>
                     <h3>Academic Excellence Goals</h3>
-                    <p>Targeting a 1550+ SAT score and admission to a prestigious university with sub-20% acceptance rate. Focusing on top-tier business and finance programs that will provide the foundation for my fintech career aspirations.</p>
+                    <p>Targeting a 1550+ SAT score and admission to a prestigious university with sub-20% acceptance
+                        rate. Focusing on top-tier business and finance programs that will provide the foundation for my
+                        fintech career aspirations.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-robot"></i>
                     <h3>Algorithmic Trading Innovation</h3>
-                    <p>Developing a sophisticated algorithmic trading platform that combines advanced quantitative analysis with machine learning algorithms. This project represents the intersection of my finance and technology interests.</p>
+                    <p>Developing a sophisticated algorithmic trading platform that combines advanced quantitative
+                        analysis with machine learning algorithms. This project represents the intersection of my
+                        finance and technology interests.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-hand-holding-dollar"></i>
                     <h3>Community-Driven Crowdfunding</h3>
-                    <p>Building an innovative platform connecting local businesses with community investors. This venture aims to democratize access to capital while fostering local economic growth and community engagement.</p>
+                    <p>Building an innovative platform connecting local businesses with community investors. This
+                        venture aims to democratize access to capital while fostering local economic growth and
+                        community engagement.</p>
                 </div>
             </div>
 
             <div style="margin-top: 4rem;">
-                <h3 style="text-align: center; color: var(--accent-brown); margin-bottom: 2rem; font-size: 1.8rem;">Long-term Vision</h3>
-                <div style="background: rgba(255,255,255,0.8); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto;">
+                <h3 style="text-align: center; color: var(--accent-brown); margin-bottom: 2rem; font-size: 1.8rem;">
+                    Long-term Vision</h3>
+                <div
+                    style="background: rgba(255,255,255,0.8); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto;">
                     <p style="font-size: 1.1rem; line-height: 1.7; text-align: center; margin-bottom: 1.5rem;">
-                        I envision myself as a fintech entrepreneur who bridges the gap between traditional finance and emerging technologies. My goal is to create solutions that make financial services more accessible, efficient, and transparent for everyone.
+                        I envision myself as a fintech entrepreneur who bridges the gap between traditional finance and
+                        emerging technologies. My goal is to create solutions that make financial services more
+                        accessible, efficient, and transparent for everyone.
                     </p>
                     <p style="font-size: 1rem; line-height: 1.6; text-align: center; opacity: 0.8;">
-                        Through continuous learning, strategic networking, and hands-on project development, I'm building the skills and experience necessary to make a meaningful impact in the financial technology landscape.
+                        Through continuous learning, strategic networking, and hands-on project development, I'm
+                        building the skills and experience necessary to make a meaningful impact in the financial
+                        technology landscape.
                     </p>
                 </div>
             </div>
@@ -984,7 +1152,8 @@ body.intro-complete {
                     <p><i class="fas fa-envelope"></i><strong>Email:</strong> jaidanpatel00@gmail.com</p>
                     <p><i class="fas fa-phone"></i><strong>Phone:</strong> 571-723-7655</p>
                     <p><i class="fas fa-map-marker-alt"></i><strong>Location:</strong> Ashburn, VA 20148</p>
-                    <p><i class="fas fa-globe"></i><strong>Languages:</strong> English (Native), Hindi (Professional), Gujarati (Professional)</p>
+                    <p><i class="fas fa-globe"></i><strong>Languages:</strong> English (Native), Hindi (Professional),
+                        Gujarati (Professional)</p>
                 </div>
             </div>
         </section>
@@ -993,105 +1162,105 @@ body.intro-complete {
 
     <script>
         // Store current page ID to manage transitions
-let currentPageId = 'home'; 
+        let currentPageId = 'home';
 
-// Page Navigation with URL routing
-function showPage(pageId) {
-    const allPages = document.querySelectorAll('.page-section');
-    const newPage = document.getElementById(pageId);
+        // Page Navigation with URL routing
+        function showPage(pageId) {
+            const allPages = document.querySelectorAll('.page-section');
+            const newPage = document.getElementById(pageId);
 
-    // Deactivate all pages first
-    allPages.forEach(page => {
-        if (page.id !== pageId) {
-            page.classList.remove('active');
-            page.style.display = 'none'; 
-        }
-    });
-
-    // Activate the new page
-    if (newPage) {
-        newPage.style.display = 'block';
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                newPage.classList.add('active');
+            // Deactivate all pages first
+            allPages.forEach(page => {
+                if (page.id !== pageId) {
+                    page.classList.remove('active');
+                    page.style.display = 'none';
+                }
             });
+
+            // Activate the new page
+            if (newPage) {
+                newPage.style.display = 'block';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        newPage.classList.add('active');
+                    });
+                });
+                currentPageId = pageId;
+
+                // Update URL without page reload
+                const url = pageId === 'home' ? '/' : `/${pageId}`;
+                history.pushState({ page: pageId }, '', url);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                console.error('Page not found:', pageId);
+            }
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function (event) {
+            const page = event.state?.page || getPageFromURL();
+            showPage(page);
         });
-        currentPageId = pageId;
-        
-        // Update URL without page reload
-        const url = pageId === 'home' ? '/' : `/${pageId}`;
-        history.pushState({ page: pageId }, '', url);
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        console.error('Page not found:', pageId);
-    }
-}
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', function(event) {
-    const page = event.state?.page || getPageFromURL();
-    showPage(page);
-});
+        // Get page from current URL
+        function getPageFromURL() {
+            const path = window.location.pathname;
+            if (path === '/' || path === '') return 'home';
+            return path.substring(1); // Remove leading slash
+        }
 
-// Get page from current URL
-function getPageFromURL() {
-    const path = window.location.pathname;
-    if (path === '/' || path === '') return 'home';
-    return path.substring(1); // Remove leading slash
-}
+        // Initialize page based on URL on load
+        function initializePage() {
+            // Check if we're being redirected from 404.html
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectPath = urlParams.get('redirect');
 
-// Initialize page based on URL on load
-function initializePage() {
-    // Check if we're being redirected from 404.html
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectPath = urlParams.get('redirect');
-    
-    let initialPage;
-    if (redirectPath) {
-        // We were redirected from 404.html, use the redirect path
-        initialPage = redirectPath;
-        // Clean up the URL by removing the redirect parameter and updating the path
-        const newUrl = window.location.origin + '/' + redirectPath;
-        history.replaceState({ page: redirectPath }, '', newUrl);
-    } else {
-        // Normal navigation, get page from URL
-        initialPage = getPageFromURL();
-    }
-    
-    const validPages = ['home', 'about', 'achievements', 'future', 'contact'];
-    
-    if (validPages.includes(initialPage)) {
-        showPage(initialPage);
-    } else {
-        showPage('home'); // Default to home if invalid page
-    }
-}
+            let initialPage;
+            if (redirectPath) {
+                // We were redirected from 404.html, use the redirect path
+                initialPage = redirectPath;
+                // Clean up the URL by removing the redirect parameter and updating the path
+                const newUrl = window.location.origin + '/' + redirectPath;
+                history.replaceState({ page: redirectPath }, '', newUrl);
+            } else {
+                // Normal navigation, get page from URL
+                initialPage = getPageFromURL();
+            }
+
+            const validPages = ['home', 'about', 'achievements', 'future', 'contact'];
+
+            if (validPages.includes(initialPage)) {
+                showPage(initialPage);
+            } else {
+                showPage('home'); // Default to home if invalid page
+            }
+        }
 
 
         // Progressive navbar darkening on scroll
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    const scrollProgress = Math.min(window.scrollY / 800, 1); // Increased to 800 for slower rate
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            const scrollProgress = Math.min(window.scrollY / 800, 1); // Increased to 800 for slower rate
 
-    // Calculate progressive color values
-    const lightColor = { r: 255, g: 248, b: 220 }; // --cream color
-    const darkColor = { r: 210, g: 180, b: 140 }; // --primary-tan color
+            // Calculate progressive color values
+            const lightColor = { r: 255, g: 248, b: 220 }; // --cream color
+            const darkColor = { r: 210, g: 180, b: 140 }; // --primary-tan color
 
-    const currentR = Math.round(lightColor.r + (darkColor.r - lightColor.r) * scrollProgress);
-    const currentG = Math.round(lightColor.g + (darkColor.g - lightColor.g) * scrollProgress);
-    const currentB = Math.round(lightColor.b + (darkColor.b - lightColor.b) * scrollProgress);
+            const currentR = Math.round(lightColor.r + (darkColor.r - lightColor.r) * scrollProgress);
+            const currentG = Math.round(lightColor.g + (darkColor.g - lightColor.g) * scrollProgress);
+            const currentB = Math.round(lightColor.b + (darkColor.b - lightColor.b) * scrollProgress);
 
-    // Calculate progressive opacity (0.95 to 0.95, but you can adjust if needed)
-    const currentOpacity = 0.95;
+            // Calculate progressive opacity (0.95 to 0.95, but you can adjust if needed)
+            const currentOpacity = 0.95;
 
-    // Calculate progressive shadow intensity - starts immediately but grows slowly
-    const shadowIntensity = 0.05 + (0.1 * scrollProgress); // From 0.05 to 0.15
+            // Calculate progressive shadow intensity - starts immediately but grows slowly
+            const shadowIntensity = 0.05 + (0.1 * scrollProgress); // From 0.05 to 0.15
 
-    // Apply the progressive styles
-    navbar.style.background = `rgba(${currentR}, ${currentG}, ${currentB}, ${currentOpacity})`;
-    navbar.style.boxShadow = `0 2px 20px rgba(0,0,0,${shadowIntensity})`;
-}); 
+            // Apply the progressive styles
+            navbar.style.background = `rgba(${currentR}, ${currentG}, ${currentB}, ${currentOpacity})`;
+            navbar.style.boxShadow = `0 2px 20px rgba(0,0,0,${shadowIntensity})`;
+        });
 
         // Animate cards and timeline items on scroll
         function animateOnScroll() {
@@ -1125,18 +1294,18 @@ window.addEventListener('scroll', function() {
         }
 
         // Initialize animations when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize page based on URL
-    initializePage();
-    
-    animateOnScroll();
-    createFloatingElements();
-    
-// Show content after intro animation completes (7 seconds total)
-setTimeout(() => {
-    document.body.classList.add('intro-complete');
-}, 7000); // Match your intro animation duration (6s + 1s buffer)
-});
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize page based on URL
+            initializePage();
+
+            animateOnScroll();
+            createFloatingElements();
+
+            // Show content after intro animation completes (7 seconds total)
+            setTimeout(() => {
+                document.body.classList.add('intro-complete');
+            }, 7000); // Match your intro animation duration (6s + 1s buffer)
+        });
 
         // Create floating background elements
         function createFloatingElements() {
@@ -1157,7 +1326,7 @@ setTimeout(() => {
         }
 
         // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();
             // Using a custom message box instead of alert() for better UX
             const messageBox = document.createElement('div');
@@ -1200,4 +1369,5 @@ setTimeout(() => {
         });
     </script>
 </body>
+
 </html>
