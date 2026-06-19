@@ -20,7 +20,6 @@ function runTextDecryptInitializations() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
     
     if (typeof gsap !== 'undefined') {
-        // Instantly force targets to obfuscated arrays before reveal tween fires
         targets.forEach(el => {
             const decryptTarget = el.getAttribute('data-decrypt') || el.innerText;
             el.innerText = decryptTarget.split('').map(char => char === ' ' ? ' ' : characters[Math.floor(Math.random() * characters.length)]).join('');
@@ -39,7 +38,6 @@ function runTextDecryptInitializations() {
             }
         });
     } else {
-        // Local hardware fallback
         targets.forEach(el => {
             el.innerText = el.getAttribute('data-decrypt') || el.innerText;
             el.style.opacity = "1";
@@ -56,7 +54,6 @@ function executeTextScramble(element) {
     const speedInterval = Math.max(8, Math.floor(scrambleDuration / originalText.length));
     
     const indices = Array.from({ length: originalText.length }, (_, i) => i);
-    // Fisher-Yates Random Matrix Shuffler
     for (let i = indices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -167,7 +164,6 @@ function initializeScrollAndNavigationSystem() {
     
     gsap.registerPlugin(ScrollTrigger);
 
-    // Progressive card reveals mapping logic
     const visualCards = document.querySelectorAll('.matrix-card, .node-card');
     visualCards.forEach(card => {
         gsap.from(card, {
@@ -183,7 +179,6 @@ function initializeScrollAndNavigationSystem() {
         });
     });
 
-    // Timeline nodes structural intersection highlights 
     const timelineNodes = document.querySelectorAll('.pipeline-node');
     timelineNodes.forEach((node, index) => {
         ScrollTrigger.create({
@@ -197,7 +192,6 @@ function initializeScrollAndNavigationSystem() {
         });
     });
 
-    // Scroller progress tracking bar alignment
     const pipelineWrapper = document.querySelector('.pipeline-wrapper');
     if (pipelineWrapper) {
         gsap.timeline({
@@ -213,7 +207,6 @@ function initializeScrollAndNavigationSystem() {
         });
     }
 
-    // Floating pill nav scroll monitor tracking mapping
     const structuralSections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('.nav-pill-link');
 
@@ -236,7 +229,6 @@ function initializeScrollAndNavigationSystem() {
         });
     }
 
-    // Smooth scroll configuration mapping
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -250,7 +242,6 @@ function initializeScrollAndNavigationSystem() {
         });
     });
 
-    // Tally numerical configurations on immediate scene load
     const counters = document.querySelectorAll('.stat-num[data-target]');
     counters.forEach(counter => {
         const targetValue = parseFloat(counter.getAttribute('data-target'));
@@ -278,15 +269,15 @@ function initializeContextAnalysisConsoleEngine() {
     
     if (!submitBtn || !inputField || !outputArea) return;
 
-    // Local Validation Set Containing Complete Forensic & 4.60 GPA Milestones
+    // First person normalized data string
     const RESUME_TEXT = `
     JAIDAN PATEL // CANDIDATE CONTEXT DOSSIER
     Location: Ashburn, VA | Email: jaidanpatel00@gmail.com | Phone: 571-723-7655
-    Education Track: Academies of Loudoun (Academy of Engineering & Technology, IT Pathway) & Briar Woods High School.
-    Academic Metrics: Weighted GPA: 4.60/5.0 | SAT: 1540 (790 Math, 750 EBRW).
-    Core Capabilities: Python, C++, Java, JavaScript, Graph Theory, Algebraic Topology, Persistent Homology, Laplacian Diffusion models, Excel Forecasting, Full-Stack Production.
-    Research Publication: Published Author on SSRN: "A Topological Data Analysis Framework for Automated Equity Trading using Persistent Homology, Betti Numbers, and Laplacian Diffusion". Applied persistent homology on asset correlation structures to automate local mispricing estimations.
-    Key Credentials: USACO Gold Division Competitor (Top ~1,000 nationwide). Forensics Team Congressional Debate Captain, NSDA National Qualifier in World Schools Debate (Undefeated 8-0 track at LCQ), MetroFinals Semifinalist, 1st Place Congress, 3rd Place VHSL. Founder & President of QuantClub (designed algorithmic training curriculums). 3rd Place Virginia State DECA Champion (Finance Team Decision Making). Technology Student Association National Qualifier (Webmaster Web Hub Infrastructure). Boy Scouts of America Eagle Scout Rank & Senior Patrol Leader. Three-year Varsity Swimmer (NCAP competitive athletic program background).
+    My Education Track: Academies of Loudoun (Academy of Engineering & Technology, IT Pathway) & Briar Woods High School[cite: 253, 254].
+    My Academic Metrics: Weighted GPA: 4.60/5.0 | SAT: 1540 (790 Math, 750 EBRW)[cite: 10, 255].
+    My Core Capabilities: Python, C++, Java, JavaScript, Graph Theory, Algebraic Topology, Persistent Homology, Laplacian Diffusion models, Excel Forecasting, Full-Stack Production[cite: 304].
+    My Research Publication: Published Author on SSRN [cite: 332]: "A Topological Data Analysis Framework for Automated Equity Trading using Persistent Homology, Betti Numbers, and Laplacian Diffusion"[cite: 333]. I applied persistent homology on asset correlation structures to automate local mispricing estimations[cite: 330].
+    My Key Credentials: USACO Gold Division Competitor [cite: 342] (Top ~1,000 nationwide) [cite: 343]. Forensics Team Congressional Debate Captain [cite: 321], NSDA National Qualifier in World Schools Debate (Undefeated 8-0 track at LCQ), MetroFinals Semifinalist [cite: 319], 1st Place Congress [cite: 301], 3rd Place VHSL[cite: 301]. Founder & President of QuantClub [cite: 272] (designed algorithmic training curriculums) [cite: 274]. 3rd Place Virginia State DECA Champion [cite: 282] (Finance Team Decision Making) [cite: 282]. Technology Student Association National Qualifier [cite: 302] (Webmaster Web Hub Infrastructure) [cite: 315]. Boy Scouts of America Eagle Scout Rank [cite: 278] & Senior Patrol Leader[cite: 276]. Three-year Varsity Swimmer [cite: 294] (NCAP competitive athletic program background) [cite: 294].
     `;
 
     submitBtn.addEventListener('click', executeAnalysisPipeline);
@@ -308,25 +299,26 @@ function initializeContextAnalysisConsoleEngine() {
             const dummyApiKey = "AIzaSy" + "FakeKey" + "PlaceholderForDeployment"; 
             const endpointUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${dummyApiKey}`;
 
-            const systemPrompt = `You are an elite quantitative executive, technical recruiter, and institutional admissions officer.
-            Your task is to analyze Jaidan Patel's provided candidate context dossier and compile exactly a 3-bullet-point statement explaining why he presents an exceptional technological and mathematical fit for a role or placement at the specific organization entered by the user.
-            - Base your response parameters ONLY on facts explicitly derived within the attached dossier context.
-            - Focus directly on linking Jaidan's unique capabilities (USACO Gold programming, SSRN topological quantitative trading publications, advanced graph mathematics, forensic debate leadership status, and multi-format leadership foundations) to the target domain or organizational goals.
-            - Each bullet point must be contained to a single, direct, confident, and highly persuasive sentence.
-            - All output sentences must be written entirely in lowercase text format.
-            - Do not use periods or final punctuation marks at the end of sentences.`;
+            // Refactored prompt system forcing Gemini model responses directly into first-person format
+            const systemPrompt = `You are an elite quantitative executive, technical recruiter, and institutional admissions officer evaluating Jaidan Patel's portfolio[cite: 306, 598].
+            Your task is to analyze the provided candidate context dossier for Jaidan Patel and compile exactly a 3-bullet-point statement written from the candidate's first-person perspective (using strictly "my", "me", "i") explaining why I present an exceptional technological and mathematical fit for a role or placement at the specific organization entered by the user[cite: 599, 600].
+            - Base your response parameters ONLY on facts explicitly derived within the attached dossier context[cite: 600].
+            - Focus directly on linking my unique capabilities (USACO Gold programming, my SSRN topological quantitative trading publications, my advanced graph mathematics, my forensic debate leadership status, and multi-format leadership foundations) to the target domain or organizational goals[cite: 600].
+            - Each bullet point must be contained to a single, direct, confident, and highly persuasive sentence[cite: 601, 603].
+            - All output sentences must be written entirely in lowercase text format[cite: 603].
+            - Do not use periods or final punctuation marks at the end of sentences[cite: 604].`;
 
             const queryPayload = {
-                contents: [{ parts: [{ text: `Candidate Metrics:\n${RESUME_TEXT}\nTarget Organization: "${corporateParameter}"\nGenerate the exactly 3 customized lowercase analytics points:` }] }],
+                contents: [{ parts: [{ text: `Candidate Metrics:\n${RESUME_TEXT}\nTarget Organization: "${corporateParameter}"\nGenerate the exactly 3 customized lowercase first-person analytics points:` }] }],
                 systemInstruction: { parts: [{ text: systemPrompt }] }
             };
             
             if (dummyApiKey.includes("PlaceholderForDeployment")) {
                 setTimeout(() => {
                     const cleanParam = corporateParameter.toLowerCase();
-                    const syntheticResponse = `* advanced algorithmic design tools validated by usaco gold divisions let him process complex data patterns natively for ${cleanParam}
-* his peer-reviewed ssrn topological finance structures and laplacian matrices inject graduate-level analytical rigor into the projects at ${cleanParam}
-* expert communicative orchestration proven through an undefeated 8-0 nsda debate track and congressional captaincy guarantees rapid cross-functional system execution inside ${cleanParam}`;
+                    const syntheticResponse = `* my advanced algorithmic design tools validated by usaco gold divisions allow me to process complex data patterns natively for ${cleanParam}
+* my peer-reviewed ssrn topological finance structures and laplacian matrices inject graduate-level analytical rigor into the projects at ${cleanParam}
+* my expert communicative orchestration proven through an undefeated 8-0 nsda debate track and congressional captaincy guarantees rapid cross-functional system execution inside ${cleanParam}`;
                     renderFormattedTerminalText(syntheticResponse);
                 }, 1200);
             } else {
@@ -342,11 +334,11 @@ function initializeContextAnalysisConsoleEngine() {
             }
         } catch (err) {
             console.error(err);
-            outputArea.innerHTML = `<p style="color: #D39E82;">[SYSTEM WARNING] pipeline connection error. local metrics fallback executed cleanly:\n\n* usaco gold tier c++ performance optimizes data processing structures natively\n* published topological data analysis frameworks translate abstract structures into scalable code\n* articulate policy analysis and communicative captaincy tracks ensure seamless project leadership mapping</p>`;
+            outputArea.innerHTML = `<p style="color: #D39E82;">[SYSTEM WARNING] pipeline connection error. local metrics fallback executed cleanly:\n\n* my usaco gold tier c++ performance optimizes data processing structures natively\n* my published topological data analysis frameworks translate abstract structures into scalable code\n* my articulate policy analysis and communicative captaincy tracks ensure seamless project leadership mapping</p>`;
         } finally {
             submitBtn.disabled = false;
             inputField.disabled = false;
-            submitBtn.querySelector('span').innerText = "Evaluate Metrics";
+            submitBtn.querySelector('span').innerText = "Evaluate My Metrics";
         }
     }
 
@@ -365,7 +357,7 @@ function initializeContextAnalysisConsoleEngine() {
 
 /* ==========================================================================
    5. DISPATCH FORM HANDSHAKE ENGINE
-   ========================================================================= */
+   ========================================================================== */
 function initializeContactDispatchFormEngine() {
     const form = document.getElementById('dispatchForm');
     if (!form) return;

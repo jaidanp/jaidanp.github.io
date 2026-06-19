@@ -572,7 +572,7 @@ body {
    8. INPUT ARCHITECTURES & CONTACT SECTION (SPACING REFIT)
    ========================================================================== */
 .contact-section { 
-    padding: 13rem 0 10rem 0; /* Expanded top padding sets crisp editorial line frame */
+    padding: 13rem 0 10rem 0; 
     border-top: 1px solid var(--border-color); 
     background: var(--bg-base); 
     position: relative;
@@ -615,11 +615,10 @@ a.dir-val:hover { color: var(--accent-terracotta); }
     .form-row-split { grid-template-columns: 1fr; gap: 2.2rem; } 
 }
 
-/* Strategic Top Margin Padding Isolates Floating Labels From Upper Boxes */
 .input-container { 
     position: relative; 
     width: 100%; 
-    margin-top: 1.8rem; /* Absolute buffer preserves space when label scales up */
+    margin-top: 1.8rem; 
 }
 
 .input-container input, .input-container textarea { 
@@ -648,7 +647,6 @@ a.dir-val:hover { color: var(--accent-terracotta); }
     transition: top 0.3s var(--ease-expo), font-size 0.3s var(--ease-expo), color 0.3s var(--ease-expo); 
 }
 
-/* Floating values now sit safely within container parameters */
 .input-container input:focus ~ label,
 .input-container input:not(:placeholder-shown) ~ label,
 .input-container textarea:focus ~ label,
