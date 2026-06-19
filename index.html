@@ -3,103 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaidan Patel — Quant & FinTech Innovation</title>
+    <title>Jaidan Patel — Quantitative Finance & Applied Mathematics</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="intro-loader" id="introLoader">
-        <div class="intro-track">
-            <span class="intro-text">INNOVATE</span>
-            <span class="intro-text">QUANTIFY</span>
-            <span class="intro-text">ELEVATE</span>
-        </div>
-        <div class="intro-brand">
-            <h1 class="brand-mask">Jaidan Patel</h1>
-            <div class="brand-bar"></div>
-        </div>
+    <canvas id="particleCanvas" class="global-particle-canvas"></canvas>
+
+    <div class="fixed-dossier-badge">
+        <a href="https://drive.google.com/file/d/1vypGSoALJZ8o-gSPojVZ8qbLDt6jHzw0/view?usp=sharing" target="_blank" class="star-border-wrapper">
+            <div class="star-glow-top"></div>
+            <div class="star-glow-bottom"></div>
+            <div class="star-badge-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>access dossier // resume</span>
+            </div>
+        </a>
     </div>
 
     <header class="site-header" id="siteHeader">
-        <div class="header-container">
-            <a href="#home" class="nav-logo">
-                <span class="logo-accent">//</span> Jaidan Patel
-            </a>
-            <nav class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                    <li><a href="#future" class="nav-link">Aspirations</a></li>
-                    <li><a href="#contact" class="nav-link nav-cta">Get In Touch</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
+        <nav class="desktop-pill-nav">
+            <div class="nav-pill-container">
+                <a href="#home" class="nav-pill-link active" data-section="home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span class="nav-tooltip">overview</span>
+                </a>
+                <a href="#about" class="nav-pill-link" data-section="about">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="nav-tooltip">foundation</span>
+                </a>
+                <a href="#projects" class="nav-pill-link" data-section="projects">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <span class="nav-tooltip">engineering</span>
+                </a>
+                <a href="#ai-terminal" class="nav-pill-link" data-section="ai-terminal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <span class="nav-tooltip">ai matrix</span>
+                </a>
+                <a href="#contact" class="nav-pill-link" data-section="contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                    <span class="nav-tooltip">secure contact</span>
+                </a>
+            </div>
+        </nav>
     </header>
 
     <main class="scroll-container">
 
         <section id="home" class="hero-section">
-            <div class="hero-mesh-overlay"></div>
             <div class="section-container hero-split-layout">
-                
                 <div class="hero-text-block">
                     <div class="hero-badge reveal-el">
-                        <span class="badge-dot"></span> Quantitative FinTech Pioneer
+                        <span class="badge-dot"></span> USACO Gold Division // Top ~1,000 Nationwide
                     </div>
-                    <h1 class="hero-title reveal-el">
-                        Engineering the future of <span class="text-gradient">Algorithmic Finance.</span>
-                    </h1>
-                    <p class="hero-subtitle reveal-el">
-                        Passionate financial technology researcher specializing in machine learning trading architectures, structural quantitative evaluation, and capital accessibility platforms.
+                    <h1 class="hero-title reveal-el decrypt-trigger" data-decrypt="jaidan patel">ξψϕδλμπα</h1>
+                    <p class="hero-subtitle reveal-el decrypt-trigger" data-decrypt="quantitative finance researcher and systems developer bridging theoretical algebraic mathematics with scalable cross-platform financial software architectures">
+                        ρσ_τ_λ_μ_κ_ω_ζ_θ_ψ_χ_σ_δ_α_β_ν_μ_ε_ι_ο_π_κ_λ_τ_ξ_μ_α_π_ο_ι_υ_γ_τ_ε_δ_ω_ψ_λ_μ_α_π_ξ_ν_θ_β_α_ρ
                     </p>
 
                     <div class="hero-stats-panel reveal-el">
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            </div>
                             <span class="stat-num" data-target="4.60">0.00</span>
-                            <span class="stat-label">Weighted GPA</span>
+                            <span class="stat-label">Weighted GPA // AET Pathway</span>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon></svg>
-                            </div>
                             <span class="stat-num" data-target="1540">0</span>
-                            <span class="stat-label">SAT Score</span>
+                            <span class="stat-label">SAT Score (790 Math)</span>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                            </div>
-                            <span class="stat-num">11<span class="stat-suffix">th</span></span>
-                            <span class="stat-label">Grade Level</span>
+                            <span class="stat-num">Gold</span>
+                            <span class="stat-label">USACO Computational Division</span>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                            </div>
-                            <span class="stat-num">Eagle</span>
-                            <span class="stat-label">Scout Rank</span>
+                            <span class="stat-num">SSRN</span>
+                            <span class="stat-label">Published Research Author</span>
                         </div>
                     </div>
 
                     <div class="hero-actions reveal-el">
-                        <a href="#about" class="btn btn-primary">
-                            <span>Explore Journey</span>
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Research Pipelines</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 5"></polyline></svg>
                         </a>
-                        <a href="https://drive.google.com/file/d/1vypGSoALJZ8o-gSPojVZ8qbLDt6jHzw0/view?usp=sharing" target="_blank" class="btn btn-secondary">View Resume</a>
+                        <a href="#contact" class="btn btn-secondary">Open Connection</a>
                     </div>
                 </div>
 
@@ -109,219 +100,193 @@
                             <span class="window-dot red"></span>
                             <span class="window-dot yellow"></span>
                             <span class="window-dot green"></span>
-                            <span class="window-title">quant_engine_simulation.py</span>
+                            <span class="window-title">topo_homology_engine.py</span>
                         </div>
                         <div class="vector-body">
                             <svg class="data-chart-svg" viewBox="0 0 400 200" fill="none">
-                                <path class="grid-line" d="M 10 10 L 390 10 M 10 60 L 390 60 M 10 110 L 390 110 M 10 160 L 390 160" stroke="rgba(139, 115, 85, 0.1)" stroke-width="1" />
-                                <path class="chart-streamline-1" d="M 20 150 Q 80 120 140 80 T 260 90 T 380 30" stroke="#A52A2A" stroke-width="3" stroke-linecap="round"/>
-                                <path class="chart-streamline-2" d="M 20 130 Q 90 70 160 110 T 280 40 T 380 20" stroke="#8B7355" stroke-width="2" stroke-dasharray="4,4"/>
-                                <circle cx="140" cy="80" r="4" fill="#A52A2A"/>
-                                <circle cx="260" cy="90" r="4" fill="#8B7355"/>
+                                <path class="grid-line" d="M 10 10 L 390 10 M 10 60 L 390 60 M 10 110 L 390 110 M 10 160 L 390 160" stroke="rgba(89, 65, 51, 0.08)" stroke-width="1" />
+                                <path class="chart-streamline-1" d="M 20 160 Q 90 40 160 130 T 280 60 T 380 20" stroke="#594133" stroke-width="2.5" stroke-linecap="round"/>
+                                <path class="chart-streamline-2" d="M 20 110 Q 80 150 160 60 T 290 120 T 380 50" stroke="#C2A688" stroke-width="1.5" stroke-dasharray="4,4"/>
+                                <circle cx="160" cy="130" r="4" fill="#594133"/>
+                                <circle cx="280" cy="60" r="4" fill="#8C5333"/>
                             </svg>
                             <div class="live-telemetry-feed">
-                                <div class="feed-row"><span>SYS_MODEL_ALPHA:</span> <span class="feed-status status-active">ONLINE</span></div>
-                                <div class="feed-row"><span>VECTOR_BACKTEST_YIELD:</span> <span class="feed-value">+24.81%</span></div>
-                                <div class="feed-row"><span>TARGET_MARKET_CAP:</span> <span class="feed-value">LIQUID</span></div>
+                                <div class="feed-row"><span>CORE_SYSTEM_PROMPT:</span> <span class="feed-status status-active">ONLINE</span></div>
+                                <div class="feed-row"><span>BETTI_NUMBER_ESTIMATES:</span> <span class="feed-value">SIGMA_CONVERGED</span></div>
+                                <div class="feed-row"><span>LAPLACIAN_DIFFUSION:</span> <span class="feed-value">ACTIVE</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <section id="about" class="about-section">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-index">// 01</span>
+                    <span class="section-index">// 01 // PROFILE MATRIX</span>
                     <h2 class="section-title">The Foundation</h2>
-                    <p class="section-lead">A synthesis of analytical precision, cultural expression, and structured leadership assets.</p>
-                </div>
-
-                <div class="premium-grid">
-                    <div class="matrix-card feature-wide">
-                        <div class="card-media-canvas graphic-pattern-1">
-                            <span class="canvas-badge">CORE METRICS</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-tag">Academic</span>
-                            <h3>Academic Rigor</h3>
-                            <p>Currently maintaining a 4.60 weighted GPA at Briar Woods High School and the Academies of Engineering and Technology. Achieved a 1490 SAT score as a sophomore, with goals to reach 1550+ for competitive college admissions.</p>
-                        </div>
-                    </div>
-
-                    <div class="matrix-card">
-                        <div class="card-media-canvas graphic-pattern-2">
-                            <div class="badge-pill-array"><span class="pill-node">BSA</span><span class="pill-node">EAGLE</span></div>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-tag">Operational</span>
-                            <h3>Strategic Command</h3>
-                            <p>Proud Eagle Scout and former Senior Patrol Leader, where I instructed scouts in essential skills and facilitated team-building exercises. Committed to developing leadership skills.</p>
-                        </div>
-                    </div>
-
-                    <div class="matrix-card">
-                        <div class="card-media-canvas graphic-pattern-3">
-                            <svg viewBox="0 0 100 40" class="canvas-mini-wave"><path d="M0,20 Q25,5 50,25 T100,15" fill="none" stroke="rgba(139, 115, 85, 0.4)" stroke-width="1.5"/></svg>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-tag">Kinetic</span>
-                            <h3>Physical Endurance</h3>
-                            <p>Varsity swimmer since freshman year, participating in daily practices and regular meets. This experience has taught me discipline, time management, and the value of consistent effort.</p>
-                        </div>
-                    </div>
-
-                    <div class="matrix-card">
-                        <div class="card-media-canvas graphic-pattern-4">
-                            <div class="artistic-rhythm-lines"><span></span><span></span><span></span><span></span></div>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-tag">Symmetry</span>
-                            <h3>Artistic Cadence</h3>
-                            <p>Active in Bollywood/Hip-Hop Indian dancing, celebrating my cultural heritage while developing performance skills. Two-time 1st Place winner at KAGW Competition.</p>
-                        </div>
-                    </div>
-
-                    <div class="matrix-card feature-medium">
-                        <div class="card-media-canvas graphic-pattern-5">
-                            <span class="canvas-data-string">0x5F_FINANCE</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-tag">Macro Economics</span>
-                            <h3>Enterprise Analysis</h3>
-                            <p>DECA State competitor focusing on International Finance Team Decision Making. Passionate about finance technology and preparing for admission to top-tier business schools.</p>
-                        </div>
-                    </div>
-
-                    <div class="matrix-card">
-                        <div class="card-media-canvas graphic-pattern-6"></div>
-                        <div class="card-content">
-                            <span class="card-tag">Lineage</span>
-                            <h3>Inertial Legacy</h3>
-                            <p>Driven by my two brothers who both attend Georgia Tech for Computer Science. Their success drives my ambition to excel academically and pursue innovative projects in finance technology.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="achievements" class="achievements-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-index">// 02</span>
-                    <h2 class="section-title">Validated Milestones</h2>
-                    <p class="section-lead">A repository of peer-reviewed honors, athletic metrics, and engineering execution.</p>
+                    <p class="section-lead">A synthesis of theoretical mathematical modeling, core product design, and rigorous forensics leadership tracks.</p>
                 </div>
 
                 <div class="pipeline-wrapper">
                     <div class="pipeline-progress-bar"></div>
                     
                     <div class="pipeline-node">
-                        <div class="node-indicator"></div>
-                        <div class="node-meta">01 // DECA STATE <span class="meta-coord">[COORD_X01]</span></div>
+                        <div class="node-indicator">
+                            <div class="node-indicator-inner">AET</div>
+                        </div>
+                        <div class="node-meta">01 // INSTITUTIONAL RIGOR <span class="meta-coord">[EXPECTED GRAD: 2027]</span></div>
                         <div class="node-card">
-                            <div class="node-graphic-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                            <h3>3rd Place DECA State Qualifier</h3>
-                            <p>Advanced to state competition in DECA, demonstrating exceptional business and leadership skills in a highly competitive environment.</p>
+                            <h3>Academies of Loudoun // AET Pathway</h3>
+                            <h4 class="card-timeline-sub">Information Technology Pathway & Briar Woods HS</h4>
+                            <p>Balancing rigorous computer science specializations with advanced mathematics. Managing high-level data frameworks alongside an updated 4.60 weighted GPA coursework stream.</p>
                         </div>
                     </div>
 
                     <div class="pipeline-node">
-                        <div class="node-indicator"></div>
-                        <div class="node-meta">02 // STRATEGY <span class="meta-coord">[COORD_X02]</span></div>
+                        <div class="node-indicator">
+                            <div class="node-indicator-inner">SPCH</div>
+                        </div>
+                        <div class="node-meta">02 // STRATEGIC DISCOURSE <span class="meta-coord">[NSDA NATIONALS]</span></div>
                         <div class="node-card">
-                            <div class="node-graphic-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg></div>
-                            <h3>International Finance TDM Competitor</h3>
-                            <p>Competed in Team Decision Making events focused on international finance, developing critical thinking and collaborative problem-solving abilities.</p>
+                            <h3>Congressional Debate Captain // World Schools Track</h3>
+                            <h4 class="card-timeline-sub">NSDA Nationals Qualifier & MetroFinals Semifinalist</h4>
+                            <p>Appointed Congressional Debate Captain for the forensics program. Clinched a 1st Place structural finish in Congressional Debate and placed 3rd at the VHSL State Tournament. Advanced directly as an NSDA National Qualifier in World Schools Debate after logging an undefeated 8-0 record at the Last Chance National Qualifier tournament series.</p>
                         </div>
                     </div>
 
                     <div class="pipeline-node">
-                        <div class="node-indicator"></div>
-                        <div class="node-meta">03 // KINESTHETIC <span class="meta-coord">[COORD_X03]</span></div>
+                        <div class="node-indicator">
+                            <div class="node-indicator-inner">BSA</div>
+                        </div>
+                        <div class="node-meta">03 // OPERATIONAL COMMAND <span class="meta-coord">[EAGLE SCOUT RANK]</span></div>
                         <div class="node-card">
-                            <div class="node-graphic-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-                            <h3>Two-Time Bollywood Dance Champion</h3>
-                            <p>Achieved 1st Place twice at KAGW Competition, showcasing dedication to cultural arts and performance excellence.</p>
+                            <h3>Boy Scouts of America // Senior Patrol Leader</h3>
+                            <h4 class="card-timeline-sub">Troop Leadership & Permanent Infrastructure Head</h4>
+                            <p>Attained the highest rank of Eagle Scout. Managed day-to-day campout and skills logistics for the entire troop footprint. Directed structural planning, fundraising campaigns, and engineering deployment phases for a permanent storage facility add-on at Waxpool Elementary School.</p>
                         </div>
                     </div>
 
                     <div class="pipeline-node">
-                        <div class="node-indicator"></div>
-                        <div class="node-meta">04 // DEVELOPMENT <span class="meta-coord">[COORD_X04]</span></div>
+                        <div class="node-indicator">
+                            <div class="node-indicator-inner">FIN</div>
+                        </div>
+                        <div class="node-meta">04 // MACROECONOMIC METRICS <span class="meta-coord">[DECA STATE PODIUM]</span></div>
                         <div class="node-card">
-                            <div class="node-graphic-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                            <h3>Hackathon Honorable Mention</h3>
-                            <p>Received recognition at the Academies of Loudoun Hackathon, demonstrating technical skills and innovative thinking in technology solutions.</p>
+                            <h3>3rd Place VA State Champion // Finance TDM</h3>
+                            <h4 class="card-timeline-sub">International Career Development Conference (ICDC) Qualifier</h4>
+                            <p>Validated financial modeling and analytical execution within the Finance Team Decision Making event space. Analyzed intricate international corporate case parameters under aggressive simulation limits.</p>
                         </div>
                     </div>
 
                     <div class="pipeline-node">
-                        <div class="node-indicator"></div>
-                        <div class="node-meta">05 // BSA <span class="meta-coord">[COORD_X05]</span></div>
+                        <div class="node-indicator">
+                            <div class="node-indicator-inner">ATH</div>
+                        </div>
+                        <div class="node-meta">05 // ENDURANT FOCUS <span class="meta-coord">[VARSITY ATHLETICS]</span></div>
                         <div class="node-card">
-                            <div class="node-graphic-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                            <h3>Eagle Scout Achievement</h3>
-                            <p>Attained the highest rank in Boy Scouts of America, completing extensive community service projects and leadership development.</p>
+                            <h3>Varsity Swimming // NCAP Program</h3>
+                            <h4 class="card-timeline-sub">Nation's Capital Swim Club — 6-Year Competitive Track</h4>
+                            <p>Three-year high-school Varsity athlete and consistent point scorer. Trained inside elite regional structures, translating rigorous physical endurance patterns into enhanced personal time-management efficiency.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="future" class="future-section">
+        <section id="projects" class="about-section engineering-grid-bg">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-index">// 03</span>
-                    <h2 class="section-title">Strategic Targets</h2>
-                    <p class="section-lead">Active technology development tracks aiming to transform standard transactional landscapes.</p>
-                </div>
-
-                <div class="future-showcase">
-                    <div class="showcase-content">
-                        <p class="highlight-text">
-                            "My vision is to become a leader in the rapidly evolving Finance Technology sector, leveraging cutting-edge technology to revolutionize how we approach financial services, trading, and investment strategies."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="system-blueprint-diagram">
-                    <div class="blueprint-header">// CORE_ARCHITECTURE_BLUEPRINT.SVG</div>
-                    <div class="blueprint-graphic-canvas">
-                        <svg viewBox="0 0 800 200" fill="none" class="blueprint-svg">
-                            <path d="M 150 100 L 350 100 M 450 100 L 650 100" stroke="rgba(139, 115, 85, 0.3)" stroke-width="2" stroke-dasharray="6,6" />
-                            <rect x="50" y="60" width="100" height="80" rx="12" fill="#FEFEFE" stroke="#8B7355" stroke-width="1.5"/>
-                            <text x="100" y="105" font-family="Space Grotesk" font-size="10" fill="#2C2C2C" text-anchor="middle">ACADEMIC ENGINE</text>
-                            <rect x="350" y="60" width="100" height="80" rx="12" fill="#FFF8DC" stroke="#A52A2A" stroke-width="2"/>
-                            <text x="400" y="105" font-family="Space Grotesk" font-size="10" fill="#A52A2A" text-anchor="middle" font-weight="bold">ALGO_TRADING</text>
-                            <rect x="650" y="60" width="100" height="80" rx="12" fill="#FEFEFE" stroke="#8B7355" stroke-width="1.5"/>
-                            <text x="700" y="105" font-family="Space Grotesk" font-size="10" fill="#2C2C2C" text-anchor="middle">LIQUIDITY NODE</text>
-                        </svg>
-                    </div>
+                    <span class="section-index">// 02 // TECHNICAL REPOSITORY</span>
+                    <h2 class="section-title">Research & Engineering</h2>
+                    <p class="section-lead">Algorithmic applications translating abstract mathematical concepts into scalable software platforms.</p>
                 </div>
 
                 <div class="premium-grid">
-                    <div class="matrix-card">
+                    <div class="matrix-card feature-wide">
                         <div class="card-content">
-                            <div class="card-accent-icon">✦</div>
-                            <h3>Academic Excellence</h3>
-                            <p>Targeting a 1550+ SAT score and admission to a prestigious university with sub-20% acceptance rate. Focusing on top-tier business and finance programs.</p>
+                            <span class="card-tag">Published Peer-Reviewed Framework // SSRN</span>
+                            <h3>A Topological Data Analysis Framework for Automated Equity Trading</h3>
+                            <p>Conceived, drafted, and published original quantitative research utilizing algebraic topology, Betti number sequences, and Laplacian diffusion to identify shifts in graph-modeled stock market regimes. Derived correlation structures to map local asset mispricings, generating extensive professional engagement across academic and institutional financial communities.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/jaidanp/TopoAlgoTrader" target="_blank" class="text-link">Access Repository &rarr;</a>
+                            </div>
                         </div>
                     </div>
+
                     <div class="matrix-card">
                         <div class="card-content">
-                            <div class="card-accent-icon">✦</div>
-                            <h3>Algorithmic Trading</h3>
-                            <p>Developing a sophisticated algorithmic trading platform that combines advanced quantitative analysis with machine learning algorithms.</p>
+                            <span class="card-tag">Advanced Computer Science Infrastructure</span>
+                            <h3>USACO Gold Computational Track</h3>
+                            <p>Ranked within the top tier of high school computer science students globally. Engineered high-throughput, optimized C++ and Python configurations managing advanced structures, dynamic programming sequences, graph theories, and computational geometries.</p>
                         </div>
                     </div>
+
                     <div class="matrix-card">
                         <div class="card-content">
-                            <div class="card-accent-icon">✦</div>
-                            <h3>Community Crowdfunding</h3>
-                            <p>Building an innovative platform connecting local businesses with community investors, aiming to democratize access to capital.</p>
+                            <span class="card-tag">Full-Stack Application Development</span>
+                            <h3>"2 Cents" Financial Literacy App</h3>
+                            <p>Designed and launched a comprehensive cross-platform application and web portal to support budgeting and financial literacy for student peers. Configured analytical calculators and capital optimization structures to help peers streamline higher education funding.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/jaidanp/2cents" target="_blank" class="text-link">Access Repository &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="matrix-card">
+                        <div class="card-content">
+                            <span class="card-tag">OCR Accessibility Pipeline</span>
+                            <h3>Congressional App Challenge Module</h3>
+                            <p>Engineered an accessibility-focused mobile architecture to parse data for patients. Configured Optical Character Recognition (OCR) systems to automate the scanning and digitization of medical metrics and labels.</p>
+                        </div>
+                    </div>
+
+                    <div class="matrix-card">
+                        <div class="card-content">
+                            <span class="card-tag">Enterprise Architecture // TSA Nationals</span>
+                            <h3>Community Resource Hub Infrastructure</h3>
+                            <p>Designed a responsive web framework aimed at coordinating regional community resources. Secured top state honors within the highly competitive Technology Student Association Webmaster sequence, advancing directly to National TSA brackets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-stack-wrapper">
+                    <h3 class="tech-stack-title">Core Computational Stack</h3>
+                    <div class="tech-tag-container">
+                        <span>Python</span><span>C++</span><span>Java</span><span>JavaScript</span><span>Graph Theory</span>
+                        <span>Algebraic Topology</span><span>Persistent Homology</span><span>Laplacian Diffusion</span>
+                        <span>Excel Modeling</span><span>Git // GitHub</span><span>Data Visualization</span><span>Full-Stack Architectures</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-terminal" class="about-section unified-ai-terminal-wrapper">
+            <div class="section-container">
+                <div class="section-header text-center-alignment">
+                    <span class="section-index">// 03 // INTELLIGENCE PIPELINE</span>
+                    <h2 class="section-title">Context Analysis Console</h2>
+                    <p class="section-lead">Query an automated placement model to process Jaidan Patel's portfolio metrics relative to your organization's criteria.</p>
+                </div>
+
+                <div class="ai-console-card">
+                    <div class="ai-console-header">
+                        <div class="console-controls"><span></span><span></span><span></span></div>
+                        <span class="console-label">gemini-2.5-flash // query_pipeline.exe</span>
+                    </div>
+                    <div class="ai-console-body">
+                        <p class="console-hint-text">Enter the name of your company, firm, or academic institution below to evaluate candidate alignment tracks:</p>
+                        
+                        <div class="console-input-row">
+                            <input type="text" id="aiCompanyInput" class="console-terminal-input" placeholder="Enter institution or target firm name..." autocomplete="off">
+                            <button type="button" id="aiGenerateBtn" class="console-terminal-btn">
+                                <span>Evaluate Metrics</span>
+                            </button>
+                        </div>
+
+                        <div id="aiTerminalOutput" class="console-terminal-output-area">
+                            <p class="output-placeholder-text">System awaiting parameters. Input identifier track to begin deployment...</p>
                         </div>
                     </div>
                 </div>
@@ -332,26 +297,22 @@
             <div class="section-container">
                 <div class="contact-split">
                     <div class="contact-info-panel">
-                        <span class="section-index">// CONNECT</span>
-                        <h2 class="section-title">Get In Touch</h2>
-                        <p class="panel-desc">Open a secure messaging protocol to request quantitative briefs, asset access, or collaborative research tracks.</p>
+                        <span class="section-index">// CONNECT NODES</span>
+                        <h2 class="section-title">Secure Connection</h2>
+                        <p class="panel-desc">Initiate a link to request technical briefs, research data, or discuss collaborative development projects.</p>
                         
                         <div class="directory-list">
                             <div class="dir-item">
-                                <span class="dir-label">Email Node</span>
+                                <span class="dir-label">Secure Email Node</span>
                                 <a href="mailto:jaidanpatel00@gmail.com" class="dir-val">jaidanpatel00@gmail.com</a>
                             </div>
                             <div class="dir-item">
-                                <span class="dir-label">Direct Line</span>
+                                <span class="dir-label">Direct Communication Vector</span>
                                 <a href="tel:5717237655" class="dir-val">+1 (571) 723-7655</a>
                             </div>
                             <div class="dir-item">
-                                <span class="dir-label">Location</span>
+                                <span class="dir-label">Regional Anchor</span>
                                 <span class="dir-val">Ashburn, VA // 20148</span>
-                            </div>
-                            <div class="dir-item">
-                                <span class="dir-label">Languages</span>
-                                <span class="dir-val">English (Native), Hindi (Professional), Gujarati (Professional)</span>
                             </div>
                         </div>
                     </div>
@@ -361,28 +322,28 @@
                             <div class="form-row-split">
                                 <div class="input-container">
                                     <input type="text" id="name" required placeholder=" ">
-                                    <label for="name">Name</label>
+                                    <label for="name">Identifier // Name</label>
                                     <div class="input-bar"></div>
                                 </div>
                                 <div class="input-container">
                                     <input type="email" id="email" required placeholder=" ">
-                                    <label for="email">Email</label>
+                                    <label for="email">Return Address // Email</label>
                                     <div class="input-bar"></div>
                                 </div>
                             </div>
                             <div class="input-container">
                                 <input type="text" id="subject" required placeholder=" ">
-                                <label for="subject">Subject</label>
+                                <label for="subject">Context Header // Subject</label>
                                 <div class="input-bar"></div>
                             </div>
                             <div class="input-container">
                                 <textarea id="message" rows="5" required placeholder=" "></textarea>
-                                <label for="message">Message Payload</label>
+                                <label for="message">Message Transmission Payload</label>
                                 <div class="input-bar"></div>
                             </div>
                             
                             <button type="submit" class="btn btn-primary form-submit-btn">
-                                <span>Send Message</span>
+                                <span>Transmit Dispatch</span>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 5"></polyline></svg>
                             </button>
                         </form>
@@ -393,8 +354,8 @@
 
         <footer class="site-footer">
             <div class="footer-container">
-                <span class="footer-copyright">©2026 JAIDAN PATEL. ALL RIGHTS RESERVED.</span>
-                <span class="footer-signature">WARM EDITORIAL GRAPHICS REFIT V5.0</span>
+                <span class="footer-copyright">&copy; 2026 JAIDAN PATEL. ALL RIGHTS RESERVED.</span>
+                <span class="footer-signature">WARM EDITORIAL SYSTEM // MODEL.K-PORTFOLIO.V6</span>
             </div>
         </footer>
 
