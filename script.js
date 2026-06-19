@@ -250,7 +250,7 @@ function initializeScrollAndNavigationSystem() {
         });
     });
 
-    // Tally numerical configurations on immediate scene load (Updated Target values)
+    // Tally numerical configurations on immediate scene load
     const counters = document.querySelectorAll('.stat-num[data-target]');
     counters.forEach(counter => {
         const targetValue = parseFloat(counter.getAttribute('data-target'));
@@ -278,7 +278,7 @@ function initializeContextAnalysisConsoleEngine() {
     
     if (!submitBtn || !inputField || !outputArea) return;
 
-    // Upgraded Local Validation Set Containing Complete Forensic & 4.60 GPA Milestones
+    // Local Validation Set Containing Complete Forensic & 4.60 GPA Milestones
     const RESUME_TEXT = `
     JAIDAN PATEL // CANDIDATE CONTEXT DOSSIER
     Location: Ashburn, VA | Email: jaidanpatel00@gmail.com | Phone: 571-723-7655
@@ -365,7 +365,7 @@ function initializeContextAnalysisConsoleEngine() {
 
 /* ==========================================================================
    5. DISPATCH FORM HANDSHAKE ENGINE
-   ========================================================================== */
+   ========================================================================= */
 function initializeContactDispatchFormEngine() {
     const form = document.getElementById('dispatchForm');
     if (!form) return;

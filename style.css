@@ -416,7 +416,6 @@ body {
 .pipeline-progress-bar { position: absolute; left: 50%; transform: translateX(-50%); top: 0; width: 2px; height: 100%; background-color: rgba(89, 65, 51, 0.08); }
 .pipeline-progress-bar::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: var(--scroll-track-height, 0%); background: var(--accent-umber); transform-origin: top; }
 
-/* Structural Grid Alignment Fixes */
 .pipeline-node { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -427,7 +426,6 @@ body {
 }
 .pipeline-node:last-child { margin-bottom: 0; }
 
-/* Spacing buffers preventing text headers from squeezing the central line marker */
 .node-meta { 
     grid-column: 1;
     font-family: var(--font-tech); 
@@ -457,7 +455,6 @@ body {
 .meta-coord { color: var(--accent-tan); font-weight: 400; }
 .pipeline-node.node-active .node-meta { color: var(--accent-umber); }
 
-/* Interactive Central Node Badges */
 .node-indicator {
     position: absolute;
     left: 50%;
@@ -560,7 +557,6 @@ body {
 .console-terminal-output-area { min-height: 160px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05); font-family: var(--font-tech); font-size: 0.9rem; line-height: 1.7; color: rgba(242, 239, 233, 0.85); }
 .output-placeholder-text { color: rgba(242, 239, 233, 0.3); text-align: center; padding-top: 2.5rem; font-style: italic; }
 
-/* AI Generated Content Specific Layout Refit */
 .ai-bullet-node { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; text-transform: lowercase; }
 .ai-bullet-node::before { content: '>'; position: absolute; left: 0; color: var(--accent-tan); font-weight: 700; }
 .ai-bullet-node:last-child { margin-bottom: 0; }
@@ -573,10 +569,29 @@ body {
 }
 
 /* ==========================================================================
-   8. INPUT ARCHITECTURES & RECRUITMENT DISPATCH CONTACT
+   8. INPUT ARCHITECTURES & CONTACT SECTION (SPACING REFIT)
    ========================================================================== */
-.contact-split { display: grid; grid-template-columns: 5fr 7fr; gap: 5rem; position: relative; z-index: 1; }
-@media (max-width: 950px) { .contact-split { grid-template-columns: 1fr; gap: 4rem; } }
+.contact-section { 
+    padding: 13rem 0 10rem 0; /* Expanded top padding sets crisp editorial line frame */
+    border-top: 1px solid var(--border-color); 
+    background: var(--bg-base); 
+    position: relative;
+    z-index: 1;
+}
+
+.contact-split { 
+    display: grid; 
+    grid-template-columns: 5fr 7fr; 
+    gap: 5rem; 
+    position: relative; 
+    z-index: 1; 
+}
+
+@media (max-width: 950px) { 
+    .contact-section { padding-top: 8rem; }
+    .contact-split { grid-template-columns: 1fr; gap: 4rem; } 
+}
+
 .panel-desc { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 4rem; }
 .directory-list { display: flex; flex-direction: column; gap: 2rem; }
 .dir-item { display: flex; flex-direction: column; gap: 0.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.2rem; }
@@ -584,22 +599,86 @@ body {
 .dir-val { font-size: 1.05rem; font-weight: 500; color: var(--text-primary); text-decoration: none; }
 a.dir-val:hover { color: var(--accent-terracotta); }
 
-.premium-form { display: flex; flex-direction: column; gap: 3rem; }
-.form-row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-@media (max-width: 600px) { .form-row-split { grid-template-columns: 1fr; gap: 3rem; } }
+.premium-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 2.2rem; 
+}
 
-.input-container { position: relative; width: 100%; }
-.input-container input, .input-container textarea { width: 100%; background: none; border: none; border-bottom: 1px solid var(--border-color); padding: 0.8rem 0; font-family: var(--font-sans); font-size: 1rem; color: var(--text-primary); outline: none; resize: none; }
-.input-container label { position: absolute; left: 0; top: 0.8rem; font-family: var(--font-tech); font-size: 0.85rem; color: var(--text-muted); pointer-events: none; text-transform: uppercase; letter-spacing: 0.05em; transition: top 0.3s var(--ease-expo), font-size 0.3s var(--ease-expo), color 0.3s var(--ease-expo); }
+.form-row-split { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 2.5rem; 
+}
 
+@media (max-width: 600px) { 
+    .form-row-split { grid-template-columns: 1fr; gap: 2.2rem; } 
+}
+
+/* Strategic Top Margin Padding Isolates Floating Labels From Upper Boxes */
+.input-container { 
+    position: relative; 
+    width: 100%; 
+    margin-top: 1.8rem; /* Absolute buffer preserves space when label scales up */
+}
+
+.input-container input, .input-container textarea { 
+    width: 100%; 
+    background: none; 
+    border: none; 
+    border-bottom: 1px solid var(--border-color); 
+    padding: 0.8rem 0; 
+    font-family: var(--font-sans); 
+    font-size: 1rem; 
+    color: var(--text-primary); 
+    outline: none; 
+    resize: none; 
+}
+
+.input-container label { 
+    position: absolute; 
+    left: 0; 
+    top: 0.8rem; 
+    font-family: var(--font-tech); 
+    font-size: 0.85rem; 
+    color: var(--text-muted); 
+    pointer-events: none; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    transition: top 0.3s var(--ease-expo), font-size 0.3s var(--ease-expo), color 0.3s var(--ease-expo); 
+}
+
+/* Floating values now sit safely within container parameters */
 .input-container input:focus ~ label,
 .input-container input:not(:placeholder-shown) ~ label,
 .input-container textarea:focus ~ label,
-.input-container textarea:not(:placeholder-shown) ~ label { top: -1.2rem; font-size: 0.7rem; color: var(--accent-purple); }
+.input-container textarea:not(:placeholder-shown) ~ label { 
+    top: -1.4rem; 
+    font-size: 0.72rem; 
+    color: var(--accent-terracotta); 
+}
 
-.input-bar { position: absolute; bottom: 0; left: 0; width: 0%; height: 1px; background-color: var(--accent-terracotta); transition: width 0.4s var(--ease-expo); }
-.input-container input:focus ~ .input-bar, .input-container textarea:focus ~ .input-bar { width: 100%; }
-.form-submit-btn { border: none; cursor: pointer; align-self: flex-start; }
+.input-bar { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 0%; 
+    height: 1px; 
+    background-color: var(--accent-terracotta); 
+    transition: width 0.4s var(--ease-expo); 
+}
+
+.input-container input:focus ~ .input-bar, 
+.input-container textarea:focus ~ .input-bar { 
+    width: 100%; 
+}
+
+.form-submit-btn { 
+    border: none; 
+    cursor: pointer; 
+    align-self: flex-start; 
+    margin-top: 1rem;
+}
 
 /* ==========================================================================
    9. SITE FOOTER ARCHITECTURE
@@ -609,5 +688,4 @@ a.dir-val:hover { color: var(--accent-terracotta); }
 @media (max-width: 768px) { .footer-container { padding: 0 2rem; flex-direction: column; gap: 1rem; text-align: center; } }
 .footer-copyright, .footer-signature { font-family: var(--font-tech); font-size: 0.75rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.05em; }
 
-/* Wrapper shifts handled directly by GSAP layout hooks at runtime */
 .reveal-el { transform: translateY(30px); }
