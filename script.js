@@ -269,15 +269,14 @@ function initializeContextAnalysisConsoleEngine() {
     
     if (!submitBtn || !inputField || !outputArea) return;
 
-    // First person normalized data string
     const RESUME_TEXT = `
     JAIDAN PATEL // CANDIDATE CONTEXT DOSSIER
     Location: Ashburn, VA | Email: jaidanpatel00@gmail.com | Phone: 571-723-7655
-    My Education Track: Academies of Loudoun (Academy of Engineering & Technology, IT Pathway) & Briar Woods High School[cite: 253, 254].
-    My Academic Metrics: Weighted GPA: 4.60/5.0 | SAT: 1540 (790 Math, 750 EBRW)[cite: 10, 255].
-    My Core Capabilities: Python, C++, Java, JavaScript, Graph Theory, Algebraic Topology, Persistent Homology, Laplacian Diffusion models, Excel Forecasting, Full-Stack Production[cite: 304].
-    My Research Publication: Published Author on SSRN [cite: 332]: "A Topological Data Analysis Framework for Automated Equity Trading using Persistent Homology, Betti Numbers, and Laplacian Diffusion"[cite: 333]. I applied persistent homology on asset correlation structures to automate local mispricing estimations[cite: 330].
-    My Key Credentials: USACO Gold Division Competitor [cite: 342] (Top ~1,000 nationwide) [cite: 343]. Forensics Team Congressional Debate Captain [cite: 321], NSDA National Qualifier in World Schools Debate (Undefeated 8-0 track at LCQ), MetroFinals Semifinalist [cite: 319], 1st Place Congress [cite: 301], 3rd Place VHSL[cite: 301]. Founder & President of QuantClub [cite: 272] (designed algorithmic training curriculums) [cite: 274]. 3rd Place Virginia State DECA Champion [cite: 282] (Finance Team Decision Making) [cite: 282]. Technology Student Association National Qualifier [cite: 302] (Webmaster Web Hub Infrastructure) [cite: 315]. Boy Scouts of America Eagle Scout Rank [cite: 278] & Senior Patrol Leader[cite: 276]. Three-year Varsity Swimmer [cite: 294] (NCAP competitive athletic program background) [cite: 294].
+    My Education Track: Academies of Loudoun (Academy of Engineering & Technology, IT Pathway) & Briar Woods High School.
+    My Academic Metrics: Weighted GPA: 4.60/5.0 | SAT: 1540 (790 Math, 750 EBRW).
+    My Core Capabilities: Python, C++, Java, JavaScript, Graph Theory, Algebraic Topology, Persistent Homology, Laplacian Diffusion models, Excel Forecasting, Full-Stack Production.
+    My Research Publication: Published Author on SSRN: "A Topological Data Analysis Framework for Automated Equity Trading using Persistent Homology, Betti Numbers, and Laplacian Diffusion". I applied persistent homology on asset correlation structures to automate local mispricing estimations.
+    My Key Credentials: USACO Gold Division Competitor (Top ~1,000 nationwide). Forensics Team Congressional Debate Captain, NSDA National Qualifier in World Schools Debate (Undefeated 8-0 track at LCQ), MetroFinals Semifinalist, 1st Place Congress, 3rd Place VHSL. Founder & President of QuantClub (designed algorithmic training curriculums). 3rd Place Virginia State DECA Champion (Finance Team Decision Making). Technology Student Association National Qualifier (Webmaster Web Hub Infrastructure). Boy Scouts of America Eagle Scout Rank & Senior Patrol Leader. Three-year Varsity Swimmer (NCAP competitive athletic program background).
     `;
 
     submitBtn.addEventListener('click', executeAnalysisPipeline);
@@ -299,14 +298,13 @@ function initializeContextAnalysisConsoleEngine() {
             const dummyApiKey = "AIzaSy" + "FakeKey" + "PlaceholderForDeployment"; 
             const endpointUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${dummyApiKey}`;
 
-            // Refactored prompt system forcing Gemini model responses directly into first-person format
-            const systemPrompt = `You are an elite quantitative executive, technical recruiter, and institutional admissions officer evaluating Jaidan Patel's portfolio[cite: 306, 598].
-            Your task is to analyze the provided candidate context dossier for Jaidan Patel and compile exactly a 3-bullet-point statement written from the candidate's first-person perspective (using strictly "my", "me", "i") explaining why I present an exceptional technological and mathematical fit for a role or placement at the specific organization entered by the user[cite: 599, 600].
-            - Base your response parameters ONLY on facts explicitly derived within the attached dossier context[cite: 600].
-            - Focus directly on linking my unique capabilities (USACO Gold programming, my SSRN topological quantitative trading publications, my advanced graph mathematics, my forensic debate leadership status, and multi-format leadership foundations) to the target domain or organizational goals[cite: 600].
-            - Each bullet point must be contained to a single, direct, confident, and highly persuasive sentence[cite: 601, 603].
-            - All output sentences must be written entirely in lowercase text format[cite: 603].
-            - Do not use periods or final punctuation marks at the end of sentences[cite: 604].`;
+            const systemPrompt = `You are an elite quantitative executive, technical recruiter, and institutional admissions officer evaluating Jaidan Patel's portfolio.
+            Your task is to analyze the provided candidate context dossier for Jaidan Patel and compile exactly a 3-bullet-point statement written from the candidate's first-person perspective (using strictly "my", "me", "i") explaining why I present an exceptional technological and mathematical fit for a role or placement at the specific organization entered by the user.
+            - Base your response parameters ONLY on facts explicitly derived within the attached dossier context.
+            - Focus directly on linking my unique capabilities (USACO Gold programming, my SSRN topological quantitative trading publications, my advanced graph mathematics, my forensic debate leadership status, and multi-format leadership foundations) to the target domain or organizational goals.
+            - Each bullet point must be contained to a single, direct, confident, and highly persuasive sentence.
+            - All output sentences must be written entirely in lowercase text format.
+            - Do not use periods or final punctuation marks at the end of sentences.`;
 
             const queryPayload = {
                 contents: [{ parts: [{ text: `Candidate Metrics:\n${RESUME_TEXT}\nTarget Organization: "${corporateParameter}"\nGenerate the exactly 3 customized lowercase first-person analytics points:` }] }],
@@ -356,14 +354,15 @@ function initializeContextAnalysisConsoleEngine() {
 }
 
 /* ==========================================================================
-   5. DISPATCH FORM HANDSHAKE ENGINE
+   5. REAL PRODUCTION EMAIL DISPATCH FORM ENGINE (WEB3FORMS HANDLING)
    ========================================================================== */
 function initializeContactDispatchFormEngine() {
     const form = document.getElementById('dispatchForm');
     if (!form) return;
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
+        
         const btn = this.querySelector('.form-submit-btn');
         const spanText = btn.querySelector('span');
         const initialLabel = spanText.innerText;
@@ -372,19 +371,57 @@ function initializeContactDispatchFormEngine() {
         btn.style.pointerEvents = "none";
         btn.style.opacity = "0.6";
 
-        setTimeout(() => {
-            spanText.innerText = "DISPATCH SECURED";
-            btn.style.backgroundColor = "#8C5333";
+        // Collect string values from layout input nodes
+        const senderName = document.getElementById('name').value;
+        const senderEmail = document.getElementById('email').value;
+        const formSubject = document.getElementById('subject').value;
+        const messagePayload = document.getElementById('message').value;
+        const securityToken = form.querySelector('input[name="access_key"]').value;
+
+        // Formulate standard JSON packet matching Web3Forms API schemas
+        const packet = {
+            access_key: securityToken,
+            name: senderName,
+            email: senderEmail,
+            subject: `[Portfolio Dispatch] ${formSubject}`,
+            message: messagePayload,
+            reply_to: senderEmail // Critical variable parameter maps "Reply-To" fields cleanly inside Gmail boxes
+        };
+
+        try {
+            const endpointCall = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(packet)
+            });
+
+            const parserResult = await endpointCall.json();
+
+            if (endpointCall.status === 200 || parserResult.success) {
+                spanText.innerText = "DISPATCH SECURED";
+                btn.style.backgroundColor = "#8C5333";
+                btn.style.color = "#FAF8F5";
+                form.reset();
+            } else {
+                throw new Error("Transmission authorization block exception raised");
+            }
+        } catch (err) {
+            console.error(err);
+            spanText.innerText = "TRANSMISSION FAILED";
+            btn.style.backgroundColor = "#D39E82";
             btn.style.color = "#FAF8F5";
-            
+        } finally {
+            // Revert state variables gracefully after notification flash clears
             setTimeout(() => {
                 spanText.innerText = initialLabel;
                 btn.style.background = "";
                 btn.style.color = "";
                 btn.style.pointerEvents = "";
                 btn.style.opacity = "";
-                form.reset();
-            }, 3000);
-        }, 1400);
+            }, 3500);
+        }
     });
 }

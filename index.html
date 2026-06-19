@@ -21,7 +21,7 @@
             <div class="star-glow-bottom"></div>
             <div class="star-badge-content">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span>access dossier // resume</span>
+                <span>access resume</span>
             </div>
         </a>
     </div>
@@ -319,25 +319,27 @@
 
                     <div class="contact-form-panel">
                         <form id="dispatchForm" class="premium-form">
+                            <input type="hidden" name="access_key" value="b925b1d4-6a04-490f-82d0-2a45f9ea8f75">
+                            
                             <div class="form-row-split">
                                 <div class="input-container">
-                                    <input type="text" id="name" required placeholder=" ">
+                                    <input type="text" id="name" name="name" required placeholder=" ">
                                     <label for="name">Identifier // Your Name</label>
                                     <div class="input-bar"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="email" id="email" required placeholder=" ">
+                                    <input type="email" id="email" name="email" required placeholder=" ">
                                     <label for="email">Return Address // Your Email</label>
                                     <div class="input-bar"></div>
                                 </div>
                             </div>
                             <div class="input-container">
-                                <input type="text" id="subject" required placeholder=" ">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
                                 <label for="subject">Context Header // Subject</label>
                                 <div class="input-bar"></div>
                             </div>
                             <div class="input-container">
-                                <textarea id="message" rows="5" required placeholder=" "></textarea>
+                                <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
                                 <label for="message">Message Transmission Payload</label>
                                 <div class="input-bar"></div>
                             </div>
@@ -355,7 +357,7 @@
         <footer class="site-footer">
             <div class="footer-container">
                 <span class="footer-copyright">&copy; 2026 JAIDAN PATEL. ALL RIGHTS RESERVED.</span>
-                <span class="footer-signature"></span>
+                <span class="footer-signature">WARM EDITORIAL SYSTEM // MODEL.I-PORTFOLIO.V2</span>
             </div>
         </footer>
 
